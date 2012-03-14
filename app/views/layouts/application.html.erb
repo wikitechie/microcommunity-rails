@@ -2,16 +2,49 @@
 <html>
 <head>
   <title>Microcommunity</title>
+  
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<div class="navbar navbar-fixed-top">	
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">MicroCommunity </a>			
+			<ul class="nav">		   	
+				<li class="active"><a href="#">Home</a></li>
+				<% if user_signed_in? %>			
+				<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				<% else %>
+				<li><%= link_to "Sign up", new_user_registration_path %></li> 
+				<li><%= link_to "Sign in", new_user_session_path %></li>
+				<% end  %>			
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="container">	
+	<div class="row">
+		<div class="span9"><%= yield %></div>
+		<div class="span3">
+			<h1>About MicroCommunity</h1>
+			<p>MicroCommunity is a new social platform to allow customized communities</p>
+		</div>
+	</div>	
+</div>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= yield %>
+
+
 
 </body>
 </html>
