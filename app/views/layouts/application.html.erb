@@ -18,9 +18,11 @@
 		<div class="container">
 			<a class="brand" href="#">MicroCommunity </a>			
 			<ul class="nav">		   	
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active">
+					<%= link_to "Home", { :controller => "pages", :action => "home" }%>
+				</li>
 				<% if user_signed_in? %>			
-				<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				<li><%= link_to "Sign out", { :action => "destroy",  :controller=> "devise/sessions" } %></li>
 				<% else %>
 				<li><%= link_to "Sign up", new_user_registration_path %></li> 
 				<li><%= link_to "Sign in", new_user_session_path %></li>
@@ -30,21 +32,22 @@
 	</div>
 </div>
 
-<div class="container">	
+
+<div class="container">
 	<div class="row">
-		<div class="span9"><%= yield %></div>
+		<div class="span9">
+			<% unless alert.blank? %><div class="alert alert-success row"><%= alert %></div> <% end %>
+			<% unless notice.blank? %><div class="alert alert-error row"><%= notice %></div> <% end %>
+			<div class="row">
+				<%= yield %>
+			</div>			
+		</div>
 		<div class="span3">
 			<h1>About MicroCommunity</h1>
 			<p>MicroCommunity is a new social platform to allow customized communities</p>
 		</div>
 	</div>	
 </div>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-
-
 
 </body>
 </html>
