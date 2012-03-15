@@ -19,13 +19,13 @@
 			<a class="brand" href="#">MicroCommunity </a>			
 			<ul class="nav">		   	
 				<li class="active">
-					<%= link_to "Home", { :controller => "pages", :action => "home" }%>
+					<%= link_to "Home", '/' %>
 				</li>
 				<% if user_signed_in? %>			
-				<li><%= link_to "Sign out", { :action => "destroy",  :controller=> "devise/sessions" } %></li>
+				<li><%= link_to "Sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %></li>
 				<% else %>
-				<li><%= link_to "Sign up", new_user_registration_path %></li> 
-				<li><%= link_to "Sign in", new_user_session_path %></li>
+				<li><%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %></li> 
+				<li><%= link_to "Sign in", { :action => "create",  :controller=> "devise/sessions" } %></li>
 				<% end  %>			
 			</ul>
 		</div>
@@ -36,8 +36,8 @@
 <div class="container">
 	<div class="row">
 		<div class="span9">
-			<% unless alert.blank? %><div class="alert alert-success row"><%= alert %></div> <% end %>
-			<% unless notice.blank? %><div class="alert alert-error row"><%= notice %></div> <% end %>
+			<% unless alert.blank? %><div class="alert alert-error row"><%= alert %></div> <% end %>
+			<% unless notice.blank? %><div class="alert alert-success row"><%= notice %></div> <% end %>
 			<div class="row">
 				<%= yield %>
 			</div>			
