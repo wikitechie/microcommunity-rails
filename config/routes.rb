@@ -1,7 +1,10 @@
 Microcommunity::Application.routes.draw do
   
+  resources :wikipages
+  resources :profiles
+
   root :to => 'pages#home'
-  
+  match "home" => "pages#home"
 
   devise_for :users
 

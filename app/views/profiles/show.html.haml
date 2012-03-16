@@ -1,0 +1,7 @@
+%h1 
+  The profile of  
+  = @user.email
+
+- @wikipages.each do |wikipage|  
+  %wikipage
+    =  wikipage.body

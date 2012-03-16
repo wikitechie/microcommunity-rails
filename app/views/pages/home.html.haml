@@ -1,2 +1,11 @@
-%h1 Pages#home
-%p Find me in app/views/pages/home.html.haml
+.hero-unit
+  %p Post any thing you want!  
+  %div
+    = form_for @wikipage do |f|
+      %p 
+        = f.label :body, "Body"      
+      %p 
+        = f.text_area :body, :rows => 5 
+      %p
+        = f.submit "Post"
+      

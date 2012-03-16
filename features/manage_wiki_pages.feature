@@ -4,6 +4,8 @@ Feature: manage wiki pages
     I want to manage my own wiki pages
 
 Scenario: posting a wiki page
-    Given there is a logged in user
+    Given a user exists 
+    And the user is logged in
     When he posts a wiki page
-    Then the wiki page should appear on his wall
+    Then the wiki page should be published
+    	And the wiki page should be published on his wall
