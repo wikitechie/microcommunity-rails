@@ -32,6 +32,7 @@ end
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem "cucumber-rails", :group => [:development, :test]
+gem 'database_cleaner', :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
 gem "devise"
 gem "haml", ">= 3.0.0"
