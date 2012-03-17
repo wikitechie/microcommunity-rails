@@ -1,2 +1,6 @@
-%h1 Wikipages#index
-%p Find me in app/views/wikipages/index.html.haml
+%h1 List of Wikipages
+%p Here you can find a complete of the latest wikipages on this website 
+
+- @wikipages.each do |wikipage|
+  = wikipage.body
+  %hr

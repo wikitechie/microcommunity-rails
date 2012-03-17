@@ -1,11 +1,10 @@
-.hero-unit
-  %p Post any thing you want!  
+.hero-unit  
   %div
     = form_for @wikipage do |f|
       %p 
         = f.label :body, "Body"      
       %p 
-        = f.text_area :body, :rows => 5 
+        = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
       %p
         = f.submit "Post"
       

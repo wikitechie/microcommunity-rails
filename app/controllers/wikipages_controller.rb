@@ -1,6 +1,6 @@
 class WikipagesController < ApplicationController
   def index
-    
+    @wikipages = Wikipage.all
   end
   
   def show
@@ -9,6 +9,13 @@ class WikipagesController < ApplicationController
   
   def create
     @user = current_user
-    @user.wikipages.create!(params[:wikipage])
+    @wikipage = @user.wikipages.create!(params[:wikipage]) 
+    
+    respond_to do |format|
+      if @wikipage.save
+        format.html { redirect_to @wikipage, notice: 'Post was successfully created.' }
+        format.js
+      end
+    end   
   end
 end
