@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
   
   factory :wikipage do
-    text "Ruby on Rails is a cool framework"
+    body "Ruby on Rails is a cool framework"
     user
   end
 end
