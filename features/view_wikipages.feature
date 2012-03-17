@@ -7,4 +7,9 @@ Scenario: viewing a wikipage
     Given a wikipage exists    
     When the wikipage is visited
     Then the wikipage should be there 
+    
+Scenario: listing wikipages
+	Given a list of wikipages exist    
+	When the wikipages list is visited
+	Then the wikipages should be there
     	
