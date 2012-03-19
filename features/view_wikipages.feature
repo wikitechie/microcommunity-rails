@@ -12,7 +12,7 @@ Scenario: listing wikipages
 	Given a list of wikipages exist    
 	When the wikipages list is visited
 	Then the wikipages should be there
-@focus	
+
 Scenario: viewing friends' wikipages in home news feed
 	Given a user exists
 		And the user is logged in

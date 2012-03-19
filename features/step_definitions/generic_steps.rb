@@ -6,7 +6,7 @@ end
 
 Given /^a user exists$/ do
   @user = FactoryGirl.create(:user)
-end
+end		
 
 Given /^the user is logged in$/ do
   visit ("/users/sign_in")
