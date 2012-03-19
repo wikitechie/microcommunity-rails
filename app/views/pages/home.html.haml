@@ -7,4 +7,8 @@
         = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
       %p
         = f.submit "Post"
+  .stream
+    - @friends_wikipages.each do |wikipage|
+      %p
+        = wikipage.body
       

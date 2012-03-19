@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :wikipages
+  
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  
 end

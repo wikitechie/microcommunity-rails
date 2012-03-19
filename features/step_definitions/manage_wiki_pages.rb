@@ -1,15 +1,5 @@
 include Warden::Test::Helpers
 
-Given /^a user exists$/ do
-  @user = FactoryGirl.create(:user)
-end
-
-Given /^the user is logged in$/ do
-  visit ("/users/sign_in")
-  fill_in('Email', :with => @user.email)
-  fill_in('Password', :with => @user.password)
-  find_button('Sign in').click
-end
 
 When /^he posts a wiki page$/ do  
   visit("home")
