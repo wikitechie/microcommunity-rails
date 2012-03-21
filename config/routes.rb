@@ -1,7 +1,8 @@
 Microcommunity::Application.routes.draw do
-  
+
   resources :wikipages
   resources :profiles
+  resources :events
 
   root :to => 'pages#home'
   match "home" => "pages#home"
