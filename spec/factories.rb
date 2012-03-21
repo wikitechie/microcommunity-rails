@@ -11,6 +11,6 @@ FactoryGirl.define do
   
   factory :wikipage do
     body "Ruby on Rails is a cool framework"
-    user
+    user 
   end
 end
