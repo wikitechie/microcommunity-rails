@@ -1,6 +1,6 @@
 class WikipagesController < ApplicationController
   def index
-    @wikipages = Wikipage.all
+    @wikipages = Wikipage.find(:all, :order => "updated_at ASC")
   end
   
   def show

@@ -1,7 +1,9 @@
 %h1 
   The profile of  
   = @user.email
-
-- @wikipages.each do |wikipage|  
-  %wikipage
-    =  wikipage.body
+  
+%table{ :class => "table table-striped" }
+  - @wikipages.each do |wikipage|  
+    %tr
+      %td
+        = render :partial => "shared/wikipage", :locals => {:wikipage => wikipage} 

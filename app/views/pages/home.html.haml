@@ -2,6 +2,10 @@
   %div
     = form_for @wikipage do |f|
       %p 
+        = f.label :title, "Title"      
+      %p 
+        = f.text_field :title,  :placeholder => "Title for your wiki page"
+      %p 
         = f.label :body, "Body"      
       %p 
         = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"

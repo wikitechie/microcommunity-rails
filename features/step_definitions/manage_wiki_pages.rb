@@ -1,22 +1,25 @@
-include Warden::Test::Helpers
-
-
 When /^he posts a wiki page$/ do  
   visit("home")
-  @wikipage = "Ruby on Rails is a cool language"  
-  fill_in("Body", :with => @wikipage)
+  @wikipage = FactoryGirl.build(:wikipage)  
+  fill_in("Title", :with => @wikipage.title)
+  fill_in("Body", :with => @wikipage.body)
   find_button("Post").click
+  @last_wikipage = Wikipage.last
 end
 
-Then /^the wiki page should be published$/ do
-  @last_wikipage = Wikipage.last
-  visit("/wikipages/#{@last_wikipage.id}")  
-  page.should have_content (@wikipage)
+Then /^the wiki page should be published$/ do  
+  visit(wikipage_path(@last_wikipage))
+  page.should have_content (@wikipage.title)  
+  page.should have_content (@wikipage.body)
 end
 
 Then /^the wiki page should be published on his wall$/ do
   visit("/profiles/#{@user.id}")  
-  page.should have_content (@wikipage)
+  page.should have_content (@wikipage.body)
+end
+
+Then /^he should be redirected to the wiki page$/ do
+  current_path.should == wikipage_path(@last_wikipage)
 end
 
 

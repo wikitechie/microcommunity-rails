@@ -1,4 +1,3 @@
-@focus
 Feature: Add Event
 In order to make it easy for people to arrange and know about events
 As a user

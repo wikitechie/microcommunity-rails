@@ -1,5 +1,13 @@
 %h1 
-  A Wikipage
+  = @wikipage.title
+
+%p
+  First created by 
+  = link_to @wikipage.user.email, "/profiles/" + @wikipage.user.id.to_s
+  ,  
+  last updated on
+  = @wikipage.updated_at
   
-%wikipage
+  
+%p
   =  @wikipage.body
