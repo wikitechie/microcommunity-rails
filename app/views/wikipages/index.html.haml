@@ -1,6 +1,21 @@
-%h1 List of Wikipages
-%p Here you can find a complete of the latest wikipages on this website 
+%h1 Wikipages
+%table{:class => "table table-striped"}
+  %thead
+    %tr
+      %th ID
+      %th
+        = t("activerecord.attributes.wikipage.body", :default => t("activerecord.labels.body", :default => "Body"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @wikipages.each do |wikipage|
+      %tr
+        %td= wikipage.id
+        %td= link_to wikipage.body, wikipage_path(wikipage)
+        %td= wikipage.created_at
+        %td
+          = link_to "Show", wikipage_path(wikipage)
+          = link_to "Edit", edit_wikipage_path(wikipage)
+          = link_to "Destroy", wikipage_path(wikipage), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-- @wikipages.each do |wikipage|
-  = wikipage.body
-  %hr
+= link_to "New", new_wikipage_path, :class => 'btn btn-primary'

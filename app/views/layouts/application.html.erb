@@ -23,6 +23,7 @@
 				</li>
 				<% if user_signed_in? %>			
 				<li><%= link_to "Sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %></li>
+				<li><%= link_to "Profile", "profiles/#{current_user.id}" %></li>
 				<% else %>
 				<li><%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %></li> 
 				<li><%= link_to "Sign in", { :action => "create",  :controller=> "devise/sessions" } %></li>

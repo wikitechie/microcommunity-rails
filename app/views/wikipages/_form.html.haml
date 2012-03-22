@@ -1,0 +1,16 @@
+.clearfix
+  = f.label :title, t("activerecord.attributes.wikipage.title", :default => "Title"), :class => :label
+  .input
+    = f.text_field :title, :class => 'text_field'
+.clearfix
+  = f.label :body, t("activerecord.attributes.wikipage.body", :default => "Body"), :class => :label
+  .input
+    = f.text_area :body, :class => 'text_area',  :rows => "15", :cols => "80"
+  .input
+    = f.hidden_field :user_id, :class => 'number_field'
+
+
+.form-actions
+  %button{:class => "btn primary", :type => "submit"} Save
+  or
+  = link_to "Cancel", wikipages_path

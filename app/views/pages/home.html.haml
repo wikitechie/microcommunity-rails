@@ -1,16 +1,32 @@
-.hero-unit  
-  %div
-    = form_for @wikipage do |f|
+.tabbable
+  %ul{:class => "nav nav-tabs"}
+    %li.active
+      :plain
+        <a href="#1" data-toggle="tab">Section 1</a>
+    %li
+      :plain
+        <a href="#2" data-toggle="tab">Section 2</a>
+  %div{:class => "tab-content"}
+    %div{:class => "tab-pane active", :id => "#1"}
       %p 
-        = f.label :title, "Title"      
+        %div    
+          = form_for @wikipage do |f|
+            %p 
+              = f.label :title, "Title"      
+            %p 
+              = f.text_field :title,  :placeholder => "Title for your wiki page"
+            %p 
+              = f.label :body, "Body"      
+            %p 
+              = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
+            %p
+              = f.submit "Post", :class => "btn"
+    %div{:class => "tab-pane", :id => "#2"}
       %p 
-        = f.text_field :title,  :placeholder => "Title for your wiki page"
-      %p 
-        = f.label :body, "Body"      
-      %p 
-        = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
-      %p
-        = f.submit "Post"
+        Howdy, I'm in Section 2.
+            
+
+  
   .stream
     - @friends_wikipages.each do |wikipage|
       %p
