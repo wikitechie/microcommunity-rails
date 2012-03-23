@@ -1,4 +1,8 @@
 class WikipagesController < ApplicationController
+  def new
+    @wikipage = Wikipage.new
+  end
+  
   def index
     @wikipages = Wikipage.find(:all, :order => "updated_at ASC")
   end

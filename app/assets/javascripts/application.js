@@ -9,3 +9,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-tab
+
+$(document).ready(function(){
+	$('#post-tab').click(function(){
+		$(this).hide();	
+	});
+	
+	$('a#wiki-tab').click(function(){
+		$(this).hide();	
+	});
+	
+})
+
+
+
+
