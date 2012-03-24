@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
   
+  acts_as_followable
+  acts_as_follower
+  
+  
 end

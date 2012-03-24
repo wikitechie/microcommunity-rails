@@ -47,7 +47,7 @@ Given /^the user is following another user$/ do
 end
 
 When /^the followed user creates a new wiki page$/ do
-  @followed_user_wikipage = @followed_user.wikipages.create(FactoriGirl.attributes_for(:wikipage))
+  @followed_user_wikipage = @followed_user.wikipages.create(FactoryGirl.attributes_for(:wikipage))
 end
 
 Then /^the according activity element should appear on the users news feed$/ do
