@@ -24,11 +24,12 @@
     %div{:class => "tab-pane", :id => "#post-tab"}
       %p 
         Howdy, I'm in Section 2.
-            
 
-  
-  .stream
-    - @friends_wikipages.each do |wikipage|
-      %p
-        = wikipage.body
+
+  .activity
+    %ul
+      - @activities.each do |activity|
+        %li
+          = "#{activity.user.profile.name} #{activity.verb}d a new wiki page titled #{activity.action_object.title}"
+      
       
