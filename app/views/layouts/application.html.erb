@@ -11,44 +11,82 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<div class="navbar navbar-fixed-top">	
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="#">MicroCommunity </a>			
-			<ul class="nav">		   	
-				<li class="active">
-					<%= link_to "Home", '/' %>
-				</li>
-				<% if user_signed_in? %>			
-				<li><%= link_to "Sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %></li>
-				<li><%= link_to "Profile", "profiles/#{current_user.id}" %></li>
-				<% else %>
-				<li><%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %></li> 
-				<li><%= link_to "Sign in", { :action => "create",  :controller=> "devise/sessions" } %></li>
-				<% end  %>			
-			</ul>
-		</div>
-	</div>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">MicroCommunity</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to "Home", '/' %></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="navbar-text pull-right">
+			<% if user_signed_in? %>			
+				Logged in as <%= link_to "Profile", "profiles/#{current_user.id}" %>, <%= link_to "sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %>
+			<% else %>
+				<%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %> or
+				<%= link_to "sign in", { :action => "create",  :controller=> "devise/sessions" } %>
+			<% end  %>			
+        </p>
+      </div><!--/.nav-collapse -->
+
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
 
-<div class="container">
-	<div class="row">
-		<div class="span9">
-			<% unless alert.blank? %><div class="alert alert-error row"><%= alert %></div> <% end %>
-			<% unless notice.blank? %><div class="alert alert-success row"><%= notice %></div> <% end %>
-			<div class="row">
-				<%= yield %>
-			</div>			
-		</div>
-		<div class="span3">
-			<h1>About MicroCommunity</h1>
-			<p>MicroCommunity is a new social platform to allow customized communities</p>
-		</div>
-	</div>	
-</div>
+          <li class="nav-header">Sidebar</li>
+          <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="nav-header">Sidebar</li>
+
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+
+          <li class="nav-header">Sidebar</li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+      </div><!--/.well -->
+    </div><!--/span-->
+
+    <div class="span9">
+       	<% unless alert.blank? %><div class="alert alert-error row"><%= alert %></div> <% end %>
+		<% unless notice.blank? %><div class="alert alert-success row"><%= notice %></div> <% end %>
+		<%= yield %>
+    </div>
+
+  </div><!--/row-->
+
+  <hr>
+
+  <footer>
+    <p>&copy; Company 2012</p>
+  </footer>
+
+</div><!--/.fluid-container-->
 
 </body>
 </html>
