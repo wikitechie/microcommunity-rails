@@ -32,7 +32,7 @@
         </ul>
         <p class="navbar-text pull-right">
 			<% if user_signed_in? %>			
-				Logged in as <%= link_to "Profile", "profiles/#{current_user.id}" %>, <%= link_to "sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %>
+				Logged in as <%= link_to current_user.email, "profiles/#{current_user.id}" %>, <%= link_to "sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %>
 			<% else %>
 				<%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %> or
 				<%= link_to "sign in", { :action => "create",  :controller=> "devise/sessions" } %>
