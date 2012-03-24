@@ -1,3 +1,13 @@
+- if @wikipage.errors.any?
+  #error_explanation{:class => "alert alert-error row"}
+    %p 
+      = pluralize(@wikipage.errors.count, "error")
+      prohibited this wikipage from being saved:
+      %ul
+        - @wikipage.errors.full_messages.each do |msg| 
+          %li 
+            = msg
+
 .clearfix
   = f.label :title, t("activerecord.attributes.wikipage.title", :default => "Title"), :class => :label
   .input

@@ -11,10 +11,9 @@
     - @wikipages.each do |wikipage|
       %tr
         %td= wikipage.id
-        %td= link_to wikipage.body, wikipage_path(wikipage)
+        %td= link_to wikipage.title, wikipage_path(wikipage)
         %td= wikipage.created_at
-        %td
-          = link_to "Show", wikipage_path(wikipage)
+        %td          
           = link_to "Edit", edit_wikipage_path(wikipage)
           = link_to "Destroy", wikipage_path(wikipage), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
