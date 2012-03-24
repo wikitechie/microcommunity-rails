@@ -40,3 +40,19 @@ Then /^the user should see his friends' wikipages$/ do
   end
    
 end
+
+Given /^the user is following another user$/ do
+  @followed_user = FactoryGirl.create(:user)
+  @user.follow(@followed_user)
+end
+
+When /^the followed user creates a new wiki page$/ do
+  @followed_user_wikipage = @followed_user.wikipages.create(FactoriGirl.attributes_for(:wikipage))
+end
+
+Then /^the according activity element should appear on the users news feed$/ do
+  visit(root_path)
+  page.should have_content(@followed_user.profile.name)  
+  page.should have_content("created a new wiki page titled")
+  page.should have_content(@followed_user_wikipage.title)  
+end

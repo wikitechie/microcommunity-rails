@@ -1,8 +1,4 @@
-MicroCommunity Groups are groups in which its memebers share content in two streams:
-* Social Stream: in this stream members can post photos, posts and events
-* Content Stream: in this stream appears the activity of members on group content.
-
-Group content is not exclusive to the group, it is only content which is followed by the group. A content is followed by a group when one of its members assigns the following relationship between a piece of content and between the group. 
+Feature: Group sharing
 
 Background
 	Given a logged user exists with email "samer@gmail.com"
