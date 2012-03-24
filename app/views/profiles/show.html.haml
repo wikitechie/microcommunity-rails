@@ -1,9 +1,15 @@
-%h1 
-  The profile of  
-  = @user.email
-  
-%table{ :class => "table table-striped" }
-  - @wikipages.each do |wikipage|  
-    %tr
-      %td
-        = render :partial => "shared/wikipage", :locals => {:wikipage => wikipage} 
+%p#notice= notice
+
+%p
+  %b Name:
+  = @profile.name
+%p
+  %b Bio:
+  = @profile.bio
+%p
+  %b User:
+  = @profile.user_id
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path

@@ -6,7 +6,8 @@ FactoryGirl.define do
   factory :user do
     email 
     password "FooBar"
-    password_confirmation "FooBar"   
+    password_confirmation "FooBar"
+    profile   
   end
   
   factory :wikipage do
