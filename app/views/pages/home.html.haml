@@ -30,6 +30,6 @@
     %ul
       - @activities.each do |activity|
         %li
-          = "#{activity.user.profile.name} #{activity.verb}d a new wiki page titled #{activity.action_object.title}"
+          = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
       
       
