@@ -1,35 +1,39 @@
-.tabbable
-  %ul{:class => "nav nav-tabs"}
-    %li.active
-      :plain
-        <a href="#wiki-tab" data-toggle="tab">Section 1</a>
-    %li
-      :plain
-        <a href="#post-tab" data-toggle="tab">Section 2</a>
-  %div{:class => "tab-content"}
-    %div{:class => "tab-pane active", :id => "#wiki-tab"}
-      %p 
-        %div    
-          = form_for @wikipage do |f|
-            %p 
-              = f.label :title, "Title"      
-            %p 
-              = f.text_field :title,  :placeholder => "Title for your wiki page"
-            %p 
-              = f.label :body, "Body"      
-            %p 
-              = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
-            %p
-              = f.submit "Post", :class => "btn"
-    %div{:class => "tab-pane", :id => "#post-tab"}
-      %p 
-        Howdy, I'm in Section 2.
-
-
+.span4
   .activity
+    %h1 News Feed
     %ul
       - @activities.each do |activity|
         %li
           = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+
+.span4
+  .tabbable
+    %ul{:class => "nav nav-tabs"}
+      %li.active
+        :plain
+          <a href="#wiki-tab" data-toggle="tab">Section 1</a>
+      %li
+        :plain
+          <a href="#post-tab" data-toggle="tab">Section 2</a>
+    %div{:class => "tab-content"}
+      %div{:class => "tab-pane active", :id => "#wiki-tab"}
+        %p 
+          %div    
+            = form_for @wikipage do |f|
+              %p 
+                = f.label :title, "Title"      
+              %p 
+                = f.text_field :title,  :placeholder => "Title for your wiki page"
+              %p 
+                = f.label :body, "Body"      
+              %p 
+                = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
+              %p
+                = f.submit "Post", :class => "btn"
+      %div{:class => "tab-pane", :id => "#post-tab"}
+        %p 
+          Howdy, I'm in Section 2.
+
+
       
       
