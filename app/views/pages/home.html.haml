@@ -1,20 +1,22 @@
 .span4
   .activity
-    %h1 News Feed
+    %h2 News Feed
     %ul
       - @activities.each do |activity|
         %li
           = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
 
 .span4
+  = link_to "Create a group",{} ,:class => "btn btn-large" 
+  %hr
   .tabbable
     %ul{:class => "nav nav-tabs"}
       %li.active
         :plain
-          <a href="#wiki-tab" data-toggle="tab">Section 1</a>
+          <a href="#wiki-tab" data-toggle="tab">Wikipage</a>
       %li
         :plain
-          <a href="#post-tab" data-toggle="tab">Section 2</a>
+          <a href="#post-tab" data-toggle="tab">Question</a>
     %div{:class => "tab-content"}
       %div{:class => "tab-pane active", :id => "#wiki-tab"}
         %p 
@@ -33,6 +35,8 @@
       %div{:class => "tab-pane", :id => "#post-tab"}
         %p 
           Howdy, I'm in Section 2.
+  
+    
 
 
       
