@@ -1,9 +1,3 @@
-@factory = {}
-
-Given /^a "([^"]*)" exists$/ do |arg1|
-  @factory[:arg1] = FactoryGirl.create(arg1)
-end
-
 Given /^a user exists$/ do
   @user = FactoryGirl.create(:user)
 end		
