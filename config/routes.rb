@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  resources :questions
+
   resources :wikipages
   resources :profiles
   resources :events
