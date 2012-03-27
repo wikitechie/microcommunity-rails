@@ -1,13 +1,16 @@
 .span4
   .activity
     %h2 News Feed
-    %ul
-      - @activities.each do |activity|
-        %li
-          = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+    -if @activites.nil?
+      Your news feed has nothing yet
+    -else
+      %ul
+        - @activities.each do |activity|
+          %li
+            = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
 
 .span4
-  = link_to "Create a group",{} ,:class => "btn btn-large" 
+  = link_to "Create a group",{} ,:class => "btn btn-large"
   %hr
   .tabbable
     %ul{:class => "nav nav-tabs"}
@@ -19,25 +22,19 @@
           <a href="#post-tab" data-toggle="tab">Question</a>
     %div{:class => "tab-content"}
       %div{:class => "tab-pane active", :id => "#wiki-tab"}
-        %p 
-          %div    
+        %p
+          %div
             = form_for @wikipage do |f|
-              %p 
-                = f.label :title, "Title"      
-              %p 
+              %p
+                = f.label :title, "Title"
+              %p
                 = f.text_field :title,  :placeholder => "Title for your wiki page"
-              %p 
-                = f.label :body, "Body"      
-              %p 
+              %p
+                = f.label :body, "Body"
+              %p
                 = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
               %p
                 = f.submit "Post", :class => "btn"
       %div{:class => "tab-pane", :id => "#post-tab"}
-        %p 
+        %p
           Howdy, I'm in Section 2.
-  
-    
-
-
-      
-      

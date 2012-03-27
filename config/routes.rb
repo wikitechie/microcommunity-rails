@@ -2,7 +2,9 @@ Microcommunity::Application.routes.draw do
 
   resources :wikipages
   resources :profiles
-  resources :events
+  resources :events do
+  	resource :attedants
+  end
 
   root :to => 'pages#home'
   match "home" => "pages#home"
@@ -56,8 +58,8 @@ Microcommunity::Application.routes.draw do
   #     resources :products
   #   end
 
-  
-  
+
+
 
   # See how all your routes lay out with "rake routes"
 

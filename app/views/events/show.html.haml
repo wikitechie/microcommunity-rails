@@ -1,5 +1,6 @@
-%h1 
+%h1
 	= @event.title
-%p 
+%a#event-attend{:href=>event_path(@event), :method=> "POST"}
+	Attend
+%p
 	= @event.place
-	

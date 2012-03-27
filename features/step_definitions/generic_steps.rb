@@ -1,6 +1,6 @@
 Given /^a user exists$/ do
   @user = FactoryGirl.create(:user)
-end		
+end
 
 Given /^the user is logged in$/ do
   visit ("/users/sign_in")
@@ -11,7 +11,7 @@ end
 
 Given /^the user has a list of friends$/ do
   @friends = [ FactoryGirl.create(:user), FactoryGirl.create(:user), FactoryGirl.create(:user)]
-  @friends.each do |friend| 
+  @friends.each do |friend|
     @user.friendships.create(:friend_id => friend.id)
   end
 end
@@ -32,7 +32,7 @@ Then /^the user should see his friends' wikipages$/ do
   @friends_wikipages.each do |wikipage|
     page.should have_content wikipage.body
   end
-   
+
 end
 
 Given /^the user is following another user$/ do
@@ -46,7 +46,11 @@ end
 
 Then /^the according activity element should appear on the users news feed$/ do
   visit(root_path)
-  page.should have_content(@followed_user.profile.name)  
+  page.should have_content(@followed_user.profile.name)
   page.should have_content("created a new wiki page titled")
-  page.should have_content(@followed_user_wikipage.title)  
+  page.should have_content(@followed_user_wikipage.title)
+end
+
+Then /^he should see that there is nothing$/ do
+  page.should have_content("Your news feed has nothing yet")
 end
