@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  resources :questions
+
   resources :wikipages
   resources :profiles
   resources :events do
@@ -8,7 +10,7 @@ Microcommunity::Application.routes.draw do
 
   root :to => 'pages#home'
   match "home" => "pages#home"
-
+  match "questions" =>"questions"
   devise_for :users
 
   # The priority is based upon order of creation:
