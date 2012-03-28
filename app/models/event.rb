@@ -3,6 +3,6 @@ class Event < ActiveRecord::Base
 
 	has_many :attendances
 
-	has_many :attendants, :class_name => "User", :through => :attendances
+	has_many :attendants, :class_name => "User", :through => :attendances, :source => :user
 
 end

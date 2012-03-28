@@ -1,5 +1,15 @@
 require 'spec_helper'
 
 describe Event do
-  pending "add some examples to (or delete) #{__FILE__}"
+	before(:each) do
+		@attr = {:title => "Wikitechie", :place => "SCS"}
+	end
+
+	it "should be able to add attendants" do
+		user = Factory(:user)
+		event = Factory(:event)
+		event.attendants.create(@attr)
+		event.attendants.create(@attr.merge({:title=>"TED"}))
+		event.attendants.should_not be_empty
+	end
 end
