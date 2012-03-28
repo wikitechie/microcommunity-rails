@@ -10,6 +10,8 @@
   %b User:
   = @profile.user_id
 
-= link_to 'Edit', edit_profile_path(@profile)
-\|
+-if user_signed_in? && current_user.id == @profile.user_id
+  = link_to 'Edit', edit_profile_path(@profile)
+  \|
+
 = link_to 'Back', profiles_path
