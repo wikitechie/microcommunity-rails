@@ -23,6 +23,7 @@ Then /^the user should be redirected to the group page$/ do
 end
 
 Then /^a post with content "([^"]*)"  should appear in the social stream$/ do |post|
+  print page.html
   find("#social-stream").should have_content  post
 end
 

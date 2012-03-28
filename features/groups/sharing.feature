@@ -11,6 +11,7 @@ Feature: Group sharing
 
 	@isstaif
 	Scenario: posting a message into a group
+		Given the user is logged in
 		When the user posts "Hello, World!" into the group publisher
 		Then the user should be redirected to the group page
 			And a post with content "Hello, World!"  should appear in the social stream

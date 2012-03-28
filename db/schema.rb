@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20120328201419) do
     t.text     "text"
     t.integer  "user_id"
     t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
