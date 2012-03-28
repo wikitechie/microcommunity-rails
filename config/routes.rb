@@ -7,7 +7,7 @@ Microcommunity::Application.routes.draw do
   resources :wikipages
   resources :profiles
   resources :events do
-  	resource :attedants
+  	resources :attendances
   end
 
   root :to => 'pages#home'
