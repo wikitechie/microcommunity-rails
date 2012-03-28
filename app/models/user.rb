@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :wikipages
   has_many :events
+  has_many :posts
 
   has_many :friendships
   has_many :friends, :through => :friendships
@@ -22,3 +23,4 @@ class User < ActiveRecord::Base
 
 
 end
+

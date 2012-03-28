@@ -7,6 +7,7 @@ Feature: Group sharing
 	Background:
 		Given a user exists
 		And a group exists
+		And the user is a member of the group
 
 	@isstaif
 	Scenario: posting a message into a group

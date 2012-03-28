@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  resources :posts
+
   resources :groups
 
   resources :attendances

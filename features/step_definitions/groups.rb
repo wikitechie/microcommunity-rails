@@ -2,13 +2,20 @@ Given /^a group exists$/ do
   @group = FactoryGirl.create(:group)
 end
 
+Given /^the user is a member of the group$/ do
+  @group.memberships.create(:member_id => @user)
+end
+
+
 When /^the user posts "([^"]*)" into the group publisher$/ do |post|
   visit group_path(@group)
-
+  #to nest the rest of the test code in this block
   within("#group-publisher") do
-    fill_in "#publisher", :with => post
-    click_button "Post"
   end
+
+  fill_in "text", :with => post
+  click_button "Post"
+
 end
 
 Then /^the user should be redirected to the group page$/ do

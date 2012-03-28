@@ -1,12 +1,26 @@
-%p#notice= notice
+.row
+	%p#notice= notice
 
-%p
-  %b Name:
-  = @group.name
-%p
-  %b Description:
-  = @group.description
+	%p
+		%b Name:
+		= @group.name
+	%p
+		%b Description:
+		= @group.description
 
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+	= link_to 'Edit', edit_group_path(@group)
+	\|
+	= link_to 'Back', groups_path
+
+.row
+	#group-publisher
+		= form_tag(:controller => "posts", :action => "create", :method => "post") do
+			= text_area_tag(:text, "Share something", :size => "24x6")
+			= submit_tag("Post")
+
+.row
+	.span4
+		#social-stream
+
+	.span4
+

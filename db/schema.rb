@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328195023) do
+ActiveRecord::Schema.define(:version => 20120328201419) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20120328195023) do
     t.integer  "group_id"
     t.integer  "member_id"
     t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
