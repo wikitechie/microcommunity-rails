@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-  has_many :attedants
+  has_many :attendances
 
   acts_as_followable
   acts_as_follower
