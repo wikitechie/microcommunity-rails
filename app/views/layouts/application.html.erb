@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Microcommunity</title>
-  
+
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
@@ -31,12 +31,12 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         <p class="navbar-text pull-right">
-			<% if user_signed_in? %>			
-				Logged in as <%= link_to current_user.email, "profiles/#{current_user.id}" %>, <%= link_to "sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %>
+			<% if user_signed_in? %>
+				Logged in as <%= link_to current_user.email, "/profiles/#{current_user.id}" %>, <%= link_to "sign out", { :action => "destroy",  :controller=> "devise/sessions" }, :method => :delete %>
 			<% else %>
 				<%= link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}  %> or
 				<%= link_to "sign in", { :action => "create",  :controller=> "devise/sessions" } %>
-			<% end  %>			
+			<% end  %>
         </p>
       </div><!--/.nav-collapse -->
 
@@ -54,7 +54,7 @@
           <li class="active"><a href="#">Study</a></li>
           <li><a href="#">Research</a></li>
           <li><a href="#">Ideas</a></li>
-          
+
           <li class="nav-header">Tags</li>
           <li><a href="#">MicroCommunity</a></li>
           <li><a href="#">Rails</a></li>
