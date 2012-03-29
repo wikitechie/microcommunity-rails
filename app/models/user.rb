@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
 
+  has_many :memberships
+  has_many :groups, :through => :memberships, :source => :group
+
   has_one :profile
 
   has_many :attendances

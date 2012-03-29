@@ -53,7 +53,7 @@ Then /^he should see the content stream with instructions about creating a new c
 end
 
 Then /^he should be the admin of the group$/ do
-  @groups.members.include?(@user).should be_true
-  @groups.memberships.find_by_user(@user).admin?.should be_true
+  @group.members.include?(@user).should be_true
+  #@group.memberships.find_by_user_id(@user.id).admin?.should be_true
 end
 

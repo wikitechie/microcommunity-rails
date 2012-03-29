@@ -1,28 +1,35 @@
-.row
-	%p#notice= notice
+.span8
+	.row
+		%p#notice= notice
 
-	%p
-		%b Name:
-		= @group.name
-	%p
-		%b Description:
-		= @group.description
+		%p
+			%b Name:
+			= @group.name
+		%p
+			%b Description:
+			= @group.description
 
-	= link_to 'Edit', edit_group_path(@group)
-	\|
-	= link_to 'Back', groups_path
+		= link_to 'Edit', edit_group_path(@group)
+		\|
+		= link_to 'Back', groups_path
 
-.row
-	#group-publisher
-		= form_for [@group, @post] do |f|
-			= f.text_area :text, :size => "24x6"
-			= f.submit("Post")
+	.row
+		#group-publisher
+			= form_for [@group, @post] do |f|
+				= f.text_area :text, :size => "50x2"
+				= f.submit("Post")
 
-.row
-	.span4
-		#social-stream
-			- @group.posts.each do |post|
-				= post.text
-
-	.span4
+	.row
+		.span4
+			#social-stream
+				%ul
+					- @group.posts.each do |post|
+						%li
+							= post.text
+					- @group_activity.each do |activity|
+						%li
+							= "#{activity.user.email} #{activity.contextual_verb} titled #{activity.action_object.name}"
+		.span4
+			#content-stream
+				%p You currently have no content. To post new content pick one above
 

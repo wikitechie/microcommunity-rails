@@ -1,5 +1,5 @@
 class Membership < ActiveRecord::Base
-  has_one :member, :class_name => :user
-  has_one :group
+  belongs_to :member, :class_name => "User"
+  belongs_to :group
 end
 

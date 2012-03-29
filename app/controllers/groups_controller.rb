@@ -15,6 +15,10 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @post = @group.posts.new
+    @group_activity = Activity.where(
+      :action_object_id => @group.id,
+      :action_object_type => @group.class.to_s,
+    )
 
     respond_to do |format|
       format.html # show.html.erb
