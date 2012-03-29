@@ -32,8 +32,8 @@ end
 
 When /^he enters valid group information$/ do
   @group = FactoryGirl.build(:group)
-  fill_in "name", :with => @group.name
-  fill_in "description", :with => @group.description
+  fill_in "group_name", :with => @group.name
+  fill_in "group_description", :with => @group.description
   click_button "Create Group"
 end
 

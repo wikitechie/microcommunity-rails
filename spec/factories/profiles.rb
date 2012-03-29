@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :profile do
-    name "MyString"
-    bio "MyText"
+    name "Bob bobby"
+    bio "I'm bob bobby"
     user_id 1
   end
 end
+

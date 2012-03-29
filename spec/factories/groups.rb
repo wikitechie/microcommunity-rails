@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :group do
-    name "MyString"
-    description "MyText"
+    name "The ultimate group"
+    description "A group of people using Microcommunity"
   end
 end
+
