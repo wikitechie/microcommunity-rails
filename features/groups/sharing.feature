@@ -9,7 +9,6 @@ Feature: Group sharing
 		And a group exists
 		And the user is a member of the group
 
-	@isstaif
 	Scenario: posting a message into a group
 		Given the user is logged in
 		When the user posts "Hello, World!" into the group publisher
