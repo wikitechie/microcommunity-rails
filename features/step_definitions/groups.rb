@@ -44,7 +44,7 @@ end
 
 Then /^he should see the social stream with an entry about group creation$/ do
   page.should have_selector "#social-stream"
-  page.should have_content "#{@user.profile.name} created the #{@group.name} group"
+  page.should have_content "#{@user.profile.name} created a new group titled #{@group.name}"
 end
 
 Then /^he should see the content stream with instructions about creating a new content$/ do

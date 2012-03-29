@@ -21,6 +21,15 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_follower
 
+  def self.current_user
+    @@current_user
+  end
+
+  def self.current_user= c
+    @@current_user = c
+  end
+
+
 
 end
 
