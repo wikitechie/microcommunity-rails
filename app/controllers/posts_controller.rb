@@ -40,15 +40,20 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to :back, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if params.has_key?(:group_id)
+      @group = Group.find(params[:group_id])
+      @post = Post.new(params[:post])
+      @post.owner_id = @group.id
+      @post.owner_type = "Group"
+      @post.user_id = current_user.id
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to :back, notice: 'Post was successfully created.' }
+          format.json { render json: @post, status: :created, location: @post }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

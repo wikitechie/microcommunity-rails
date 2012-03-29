@@ -14,12 +14,9 @@
 
 .row
 	#group-publisher
-		= form_tag(:controller => "posts", :action => "create", :method => "post") do
-			= text_area_tag(:text, "Share something", :size => "24x6")
-			= hidden_field_tag(:owner_id => @group.id)
-			= hidden_field_tag(:user_id => current_user.id)
-			= hidden_field_tag(:owner_type => "Group")
-			= submit_tag("Post")
+		= form_for [@group, @post] do |f|
+			= f.text_area :text, :size => "24x6"
+			= f.submit("Post")
 
 .row
 	.span4

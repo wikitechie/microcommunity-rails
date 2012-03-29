@@ -13,7 +13,7 @@ When /^the user posts "([^"]*)" into the group publisher$/ do |post|
   within("#group-publisher") do
   end
 
-  fill_in "text", :with => post
+  fill_in "post_text", :with => post
   click_button "Post"
 
 end
@@ -23,7 +23,6 @@ Then /^the user should be redirected to the group page$/ do
 end
 
 Then /^a post with content "([^"]*)"  should appear in the social stream$/ do |post|
-  print page.html
   find("#social-stream").should have_content  post
 end
 
