@@ -11,7 +11,7 @@ Scenario: Adding a successful event
         And I should be marked as going
         And I should be directed to the event page
 
-@MhdSyrwan
+@events
 Scenario: Attending an event
     Given a user exists
       And an event exists

@@ -1,5 +1,6 @@
 When /^the user creates an event with valid data$/ do
 	@event = @user.events.create(FactoryGirl.attributes_for(:event))
+	@event.attend(@user)
 end
 
 Then /^the event should be published$/ do
