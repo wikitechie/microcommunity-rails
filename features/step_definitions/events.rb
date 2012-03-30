@@ -10,7 +10,7 @@ Then /^the event should be published$/ do
 end
 
 Then /^I should be marked as going$/ do
-  @events.attenders.include?(@user).should == true
+  @event.attendants.include?(@user).should == true
 end
 
 Then /^I should be directed to the event page$/ do

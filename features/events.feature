@@ -2,7 +2,7 @@ Feature: Add Event
 In order to make it easy for people to arrange and know about events
 As a user
 I need to create and manage events
-
+@events
 Scenario: Adding a successful event
     Given a user exists
         And the user is logged in
