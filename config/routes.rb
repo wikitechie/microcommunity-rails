@@ -10,7 +10,7 @@ Microcommunity::Application.routes.draw do
   	resources :attendances
   end
 
-	match 'event/:id/attend' => 'events#attend', :via => :post
+	match 'events/:id/attend' => 'events#attend', :via => :post
 
   root :to => 'pages#home'
   match "home" => "pages#home"

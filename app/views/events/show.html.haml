@@ -1,6 +1,6 @@
+
 %h1
 	= @event.title
-%a#event-attend{:href=>event_path(@event), :method=> :post}
-	Attend
+%div=link_to "Attend", attend_path(@event), :method => :post
 %p
 	= @event.place

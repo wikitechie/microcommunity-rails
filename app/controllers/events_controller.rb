@@ -11,6 +11,10 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		@event.attendances.create({:user_id => current_user.id, :event_id => @event.id})
 
+		respond_to do |format|
+      format.html { redirect_to event_path(@event) }
+      format.json { head :ok }
+    end
 	end
 
   # POST /events

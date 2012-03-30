@@ -17,4 +17,4 @@ Scenario: Attending an event
       And an event exists
       And the user is logged in
     When the user attends an event
-    Then the user should be marked as going
+    Then I should be marked as going

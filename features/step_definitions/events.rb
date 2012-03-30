@@ -10,8 +10,9 @@ Then /^the event should be published$/ do
   page.should have_content @event.place
 end
 
+#duplicated
 Then /^I should be marked as going$/ do
-  @event.attendants.include?(@user).should == true
+	pending
 end
 
 Then /^I should be directed to the event page$/ do
@@ -25,8 +26,8 @@ end
 
 When /^the user attends an event$/ do
   visit event_path(@event)
-  click_link 'event-attend'
-  page.should have_content(@user.name)
+	print page.html
+  click_link 'Attend'
 end
 
 Then /^the user should be marked as going$/ do
