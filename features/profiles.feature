@@ -1,6 +1,6 @@
-Feature: Prodile
+Feature: Profile
 
-@m
+
 Scenario: user visit his profile he see edit profile button
 	Given a user exists
 	And the user is logged in

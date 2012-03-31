@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :event do
-    title "MyString"
-    place "MyString"
+    title "Wikitechie Lecture"
+    place "SCS"
     datetime "2012-03-19 18:27:57"
     user
   end
