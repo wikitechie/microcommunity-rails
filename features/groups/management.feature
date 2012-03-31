@@ -1,6 +1,6 @@
 Feature: MicroCommunity Groups
 
-Background
+Background:
 	Given a logged user exists
 
 Scenario: creating a new MicroCommunity group
