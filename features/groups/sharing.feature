@@ -15,6 +15,7 @@ Feature: Group sharing
 		Then the user should be redirected to the group page
 			And a post with content "Hello, World!"  should appear in the social stream
 
+@isstaif
 	Scenario: creating a new wiki page from the group page
 		When the user posts a wiki page titled "Rails" from the page of the group "Ruby on Rails"
 		Then an activity of creating a wikipage "Rails" should appear in the content stream of the group "Rails Study"
