@@ -2,6 +2,7 @@
 
 = render 'form'
 
-= link_to 'Show', @profile
-\|
-= link_to 'Back', profiles_path
+-if @profile.user_id == current_user.id
+  = link_to 'Show', @profile
+  \|
+  = link_to 'Back', profiles_path

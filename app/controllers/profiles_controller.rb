@@ -35,13 +35,15 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    if @profile.user_id != current_user
+      @profile.update_attributes( user_id: current_user.id )
+    end
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
-    @profile.user = current_user
 
     respond_to do |format|
       if @profile.save

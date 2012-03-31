@@ -1,5 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  # POST /resource
+  def create
+    super
+    @profile = Profile.new
+    @profile.save
+  end
+
   protected
 
     def after_sign_up_path_for(resource)
