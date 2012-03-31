@@ -52,8 +52,11 @@ Then /^he should see the content stream with instructions about creating a new c
   page.should have_content "You currently have no content. To post new content pick one above"
 end
 
+Then /^he should be a member of the group$/ do
+  @last_group.users.include?(@user).should be_true
+end
+
 Then /^he should be the admin of the group$/ do
-  @group.members.include?(@user).should be_true
-  #@group.memberships.find_by_user_id(@user.id).admin?.should be_true
+  @last_group.memberships.find_by_user_id(@user.id).admin?.should be_true
 end
 

@@ -28,7 +28,7 @@
 							= post.text
 					- @group_activity.each do |activity|
 						%li
-							= "#{activity.user.email} #{activity.contextual_verb} titled #{activity.action_object.name}"
+							= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"
 		.span4
 			#content-stream
 				%p You currently have no content. To post new content pick one above
