@@ -1,6 +1,10 @@
 Feature: Profile
 
 
+Scenario: redirect user to his profile when he sign up a new account
+	When user sign up new account
+	Then redirect user to his profile
+
 Scenario: user visit his profile he see edit profile button
 	Given a user exists
 	And the user is logged in
