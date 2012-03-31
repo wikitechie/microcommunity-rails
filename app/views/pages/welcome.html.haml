@@ -2,7 +2,5 @@
   %h1 Welcome to MicroCommunity!
   %p MicroCommunity is a social platform that allows individuals, groups and communities to create and interact with popular and customized content types without the need for specialized platforms for each new content type or each new interaction with some content.
   %p
-    = link_to "Sign up", {:action=>"new", :controller=>"devise/registrations"}, :class => "btn btn-large"
-    = link_to "Sign in", { :action => "create",  :controller=> "devise/sessions" }, :class => "btn btn-large" 
-  
-
+    = link_to "Sign up", new_user_registration_path, :class => "btn btn-large"
+    = link_to "Sign in", new_user_session_path, :class => "btn btn-large" 
