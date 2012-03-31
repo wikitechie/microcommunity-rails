@@ -2,6 +2,7 @@ Given /^a group exists$/ do
   @creator = FactoryGirl.create(:user)
   User.current_user = @creator
   @group = FactoryGirl.create(:group)
+  User.current_user = nil
 end
 
 Given /^the user is a member of the group$/ do
