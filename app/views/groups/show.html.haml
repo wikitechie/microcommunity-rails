@@ -1,35 +1,44 @@
-.span8
-	.row
-		%p#notice= notice
+.span4
+	%p#notice= notice
 
+	%h1
+		= @group.name
+	%p
+		= @group.description
+	%hr
+	#group-publisher
+		= form_for [@group, @post] do |f|
+			%p
+				= f.text_area :text, :size => "80x2"
+			%p
+				= f.submit("Post", :class => "btn")
+	%hr
+	#social-stream
+		%ul
+			- @group.posts.each do |post|
+				%li
+					= post.text
+			- @group_activity.each do |activity|
+				%li
+					= "#{activity.user.email} #{activity.contextual_verb} titled #{activity.action_object.name}"
+.span4
+	#content-stream
 		%p
-			%b Name:
-			= @group.name
-		%p
-			%b Description:
-			= @group.description
+			= link_to "Wikipage", new_wikipage_path,{:remote => true, 'data-toggle' => 'modal', 'data-target' => "#wiki-modal", 'data-backdrop' => true, 'data-keyboard' => true, :class => "btn"}
+		%hr
+		%p You currently have no content. To post new content pick one above
 
-		= link_to 'Edit', edit_group_path(@group)
-		\|
-		= link_to 'Back', groups_path
 
-	.row
-		#group-publisher
-			= form_for [@group, @post] do |f|
-				= f.text_area :text, :size => "50x2"
-				= f.submit("Post")
-
-	.row
-		.span4
-			#social-stream
-				%ul
-					- @group.posts.each do |post|
-						%li
-							= post.text
-					- @group_activity.each do |activity|
-						%li
-							= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"
-		.span4
-			#content-stream
-				%p You currently have no content. To post new content pick one above
+.modal#wiki-modal
+	.modal-header
+		%a.close{"data-dismiss"=>"modal"}
+			×
+		%h3 New wikipage
+	.modal-body
+		- @wikipage = Wikipage.new
+		= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
+			= render :partial => "wikipages/form", :locals => {:f => f}
+	.modal-footer
+		%a.btn Close
+		%a.btn.btn-primary Save changes
 

@@ -10,7 +10,7 @@
             = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
 
 .span4
-  = link_to "Create a group",{} ,:class => "btn btn-large"
+  = link_to "Create a group",new_group_path ,:class => "btn btn-large"
   %hr
   .tabbable
     %ul{:class => "nav nav-tabs"}
@@ -38,3 +38,4 @@
       %div{:class => "tab-pane", :id => "#post-tab"}
         %p
           Howdy, I'm in Section 2.
+
