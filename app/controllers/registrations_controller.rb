@@ -3,8 +3,8 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @profile = Profile.new
-    @profile.save
+    @profile = Profile.create
+    @profile.update_attributes( name: "User", bio: "Do not have a bio yet")
   end
 
   protected

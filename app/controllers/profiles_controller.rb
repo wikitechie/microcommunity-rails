@@ -23,20 +23,20 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   # GET /profiles/new.json
-  def new
-    @profile = Profile.new
+  #def new
+  #  @profile = Profile.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html # new.html.erb
+  #    format.json { render json: @profile }
+  #  end
+  #end
 
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
-    if @profile.user_id != current_user
-      @profile.update_attributes( user_id: current_user.id )
+    if @profile.user != current_user
+      @profile.update_attributes(user_id: current_user.id )
     end
   end
 
