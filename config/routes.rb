@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  
+
   resources :posts
 
   resources :groups do
@@ -10,7 +12,10 @@ Microcommunity::Application.routes.draw do
 
   resources :questions
 
-  resources :wikipages
+  resources :wikipages do
+    resource :revisions
+  end
+
   resources :profiles
   resources :events do
   	resources :attendances

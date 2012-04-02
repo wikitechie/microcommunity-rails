@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :wikipages
+  has_many :revisions
   has_many :events
   has_many :posts
 

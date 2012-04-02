@@ -1,0 +1,10 @@
+= form_for @revision do |f|
+  -if @revision.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@revision.errors.count, "error")} prohibited this revision from being saved:"
+      %ul
+        - @revision.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

@@ -1,6 +1,7 @@
 class Wikipage < ActiveRecord::Base
   belongs_to :user
-  
+  has_many :revisions
+
   acts_as_followable
   
   validates :title, :presence => true
