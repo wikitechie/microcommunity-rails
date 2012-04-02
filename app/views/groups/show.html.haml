@@ -1,6 +1,4 @@
-.span4
-	%p#notice= notice
-
+.span5
 	%h1
 		= @group.name
 	%p
@@ -14,13 +12,12 @@
 				= f.submit("Post", :class => "btn")
 	%hr
 	#social-stream
-		%ul
-			- @group.posts.each do |post|
-				%li
-					= post.text
-			- @group_activity.each do |activity|
-				%li
-					= "#{activity.user.email} #{activity.contextual_verb} titled #{activity.action_object.name}"
+		- @group.posts.each do |post|
+			%p
+				= "post.user.email posted \"#{post.text}\""
+		- @group_activity.each do |activity|
+			%p
+				= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"
 .span4
 	#content-stream
 		%p
@@ -31,7 +28,9 @@
 		- else
 			- @content_stream.each do |activity|
 				%p
-					= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+					= "#{activity.user.profile.name} #{activity.contextual_verb} titled"
+					= link_to "#{activity.action_object.title}", activity.action_object
+				%hr
 
 .modal#wiki-modal
 	.modal-header
