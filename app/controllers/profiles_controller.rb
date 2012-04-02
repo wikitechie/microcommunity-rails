@@ -35,9 +35,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
-    if @profile.user != current_user
-      @profile.update_attributes(user_id: current_user.id )
-    end
+    #if @profile.user.nil?
+    #  @profile.update_attributes(user_id: current_user.id )
+    #end
   end
 
   # POST /profiles

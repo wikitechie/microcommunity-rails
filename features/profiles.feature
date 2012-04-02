@@ -1,6 +1,6 @@
 Feature: Profile
 
-
+@jobory
 Scenario: redirect user to his profile when he sign up a new account
 	When user sign up new account
 	Then redirect user to his profile

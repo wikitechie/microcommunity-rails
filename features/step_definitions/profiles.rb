@@ -1,9 +1,16 @@
 When /^user sign up new account$/ do
-  @user = FactoryGirl.create(:user)
+  @user = FactoryGirl.build(:user)
+  visit "/users/sign_up"
+  fill_in "user_email", :with => @user.email
+  fill_in "name", :with => "Bar"
+  fill_in "user_password", :with => @user.password
+  fill_in "user_password_confirmation", :with => @user.password
+  click_button "Sign up"
 end
 
 Then /^redirect user to his profile$/ do
-  visit(profile_path(@user.profile))
+  @profile = User.find_by_email(@user.email).profile
+  current_path.should == profile_path(@profile)
 end
 
 When /^the user visit his profile$/ do
