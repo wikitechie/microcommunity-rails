@@ -1,0 +1,49 @@
+.row
+	.span5
+		%h1
+			= @group.name
+		%p
+			= @group.description
+		%hr
+		#group-publisher
+			= form_for [@group, @post] do |f|
+				%p
+					= f.text_area :text, :size => "80x2"
+				%p
+					= f.submit("Post", :class => "btn")
+		%hr
+		#social-stream
+			- @group.posts.each do |post|
+				%p
+					= "post.user.email posted \"#{post.text}\""
+			- @group_activity.each do |activity|
+				%p
+					= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"
+
+	.span4
+		#content-stream
+			%p
+				= link_to "Wikipage", new_wikipage_path,{:remote => true, 'data-toggle' => 'modal', 'data-target' => "#wiki-modal", 'data-backdrop' => true, 'data-keyboard' => true, :class => "btn"}
+			%hr
+			- if @content_stream.nil?
+				%p You currently have no content. To post new content pick one above
+			- else
+				- @content_stream.each do |activity|
+					%p
+						= "#{activity.user.profile.name} #{activity.contextual_verb} titled"
+						= link_to "#{activity.action_object.title}", activity.action_object
+					%hr
+
+	.modal#wiki-modal
+		.modal-header
+			%a.close{"data-dismiss"=>"modal"}
+				×
+			%h3 New wikipage
+		.modal-body
+			- @wikipage = Wikipage.new
+			= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
+				= render :partial => "wikipages/form", :locals => {:f => f}
+		.modal-footer
+			%a.btn Close
+			%a.btn.btn-primary Save changes
+
