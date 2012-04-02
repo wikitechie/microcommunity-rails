@@ -1,12 +1,15 @@
 Feature: MicroCommunity Groups
 
 Background:
-	Given a logged user exists
+	Given a user exists
 
 Scenario: creating a new MicroCommunity group
-	When the user presses the new group button
-		And enters valid information
+	Given the user is logged in
+	When user vists the new group page
+		And he enters valid group information
 	Then he should be redirected to the group page
 		And he should see the social stream with an entry about group creation
 		And he should see the content stream with instructions about creating a new content
+		And he should be a member of the group
 		And he should be the admin of the group
+

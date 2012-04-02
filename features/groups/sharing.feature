@@ -5,16 +5,21 @@ Feature: Group sharing
 
 
 	Background:
-		Given a logged user exists with email "samer@gmail.com"
-		And a group exists named "Ruby on Rails"
-		
-	@isstaif	
-	Scenario: posting a message into a group
-		When the user posts "Hello, World!" into the group publisher
-		Then a post with content "Hello, World!"  should appear in the social stream
+		Given a user exists
+		And a group exists
+		And the user is a member of the group
 
+	Scenario: posting a message into a group
+		Given the user is logged in
+		When the user posts "Hello, World!" into the group publisher
+		Then the user should be redirected to the group page
+			And a post with content "Hello, World!"  should appear in the social stream
+
+@isstaif
 	Scenario: creating a new wiki page from the group page
-		When the user posts a wiki page titled "Rails" from the page of the group "Ruby on Rails"
-		Then an activity of creating a wikipage "Rails" should appear in the content stream of the group "Rails Study"
-			And an activity of creating a wikipage "Rails" should appear in the content stream of the user "samer@gmail.com"
-			
+		Given the user is logged in
+		When the user posts a wikipage from the group
+		Then he should be redirected to the group page
+		And an activity of creating that wikipage should appear in the content stream of the group
+			And an activity of creating that wikipage should appear in the content stream of the user
+

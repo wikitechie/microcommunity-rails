@@ -8,19 +8,19 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require bootstrap-tab
+//= require bootstrap-modal
+
+    $('.modal').modal({
+    keyboard: false
+    })
+
+    $('#post-tab').tab('show')
 
 $(document).ready(function(){
-	$('#post-tab').click(function(){
-		$(this).hide();	
-	});
-	
-	$('a#wiki-tab').click(function(){
-		$(this).hide();	
-	});
-	
-})
+	    $('.modal').hide();
+	    $('.tabbable').tab('show')
 
-
-
+});
 

@@ -1,0 +1,23 @@
+%h1 Listing posts
+
+%table
+  %tr
+    %th Text
+    %th User
+    %th Owner
+    %th
+    %th
+    %th
+
+  - @posts.each do |post|
+    %tr
+      %td= post.text
+      %td= post.user_id
+      %td= post.owner_id
+      %td= link_to 'Show', post
+      %td= link_to 'Edit', edit_post_path(post)
+      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Post', new_post_path

@@ -54,3 +54,4 @@ end
 Then /^he should see that there is nothing$/ do
   page.should have_content("Your news feed has nothing yet")
 end
+

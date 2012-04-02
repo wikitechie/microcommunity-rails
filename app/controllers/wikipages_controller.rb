@@ -41,10 +41,18 @@ class WikipagesController < ApplicationController
   # POST /wikipages.json
   def create
     @wikipage = Wikipage.new(params[:wikipage])
+    @wikipage.user_id = current_user.id
+
+    if @wikipage.save
+      if params.has_key?(:group_id)
+        @group = Group.find(params[:group_id])
+        @group.follow(@wikipage)
+      end
+    end
 
     respond_to do |format|
-      if @wikipage.save
-        format.html { redirect_to @wikipage, notice: 'Wikipage was successfully created.' }
+      unless @wikipage.new_record?
+        format.html { redirect_to :back, notice: 'Wikipage was successfully created.' }
         format.json { render json: @wikipage, status: :created, location: @wikipage }
       else
         format.html { render action: "new" }
@@ -81,3 +89,4 @@ class WikipagesController < ApplicationController
     end
   end
 end
+
