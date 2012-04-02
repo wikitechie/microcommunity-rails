@@ -26,8 +26,12 @@
 		%p
 			= link_to "Wikipage", new_wikipage_path,{:remote => true, 'data-toggle' => 'modal', 'data-target' => "#wiki-modal", 'data-backdrop' => true, 'data-keyboard' => true, :class => "btn"}
 		%hr
-		%p You currently have no content. To post new content pick one above
-
+		- if @content_stream.nil?
+			%p You currently have no content. To post new content pick one above
+		- else
+			- @content_stream.each do |activity|
+				%p
+					= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
 
 .modal#wiki-modal
 	.modal-header

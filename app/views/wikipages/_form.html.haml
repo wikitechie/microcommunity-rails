@@ -1,26 +1,29 @@
 - if @wikipage.errors.any?
-  #error_explanation{:class => "alert alert-error row"}
-    %p 
-      = pluralize(@wikipage.errors.count, "error")
-      prohibited this wikipage from being saved:
-      %ul
-        - @wikipage.errors.full_messages.each do |msg| 
-          %li 
-            = msg
+	#error_explanation{:class => "alert alert-error row"}
+		%p
+			= pluralize(@wikipage.errors.count, "error")
+			prohibited this wikipage from being saved:
+		%ul
+			- @wikipage.errors.full_messages.each do |msg|
+				%li
+					= msg
 
 .clearfix
-  = f.label :title, t("activerecord.attributes.wikipage.title", :default => "Title"), :class => :label
-  .input
-    = f.text_field :title, :class => 'text_field'
+	= f.label :title, t("activerecord.attributes.wikipage.title", :default => "Title"), :class => :label
+	.input
+		= f.text_field :title, :class => 'text_field'
 .clearfix
-  = f.label :body, t("activerecord.attributes.wikipage.body", :default => "Body"), :class => :label
-  .input
-    = f.text_area :body, :class => 'text_area',  :rows => "15", :cols => "80"
-  .input
-    = f.hidden_field :user_id, :class => 'number_field'
-
+	= f.label :body, t("activerecord.attributes.wikipage.body", :default => "Body"), :class => :label
+	.input
+		= f.text_area :body, :class => 'text_area',  :rows => "15", :cols => "80"
+	.input
+		= f.hidden_field :user_id, :class => 'number_field'
+	- unless @group.nil?
+		.input
+			= hidden_field_tag :group_id, @group.id,:class => 'number_field'
 
 .form-actions
-  %button{:class => "btn primary", :type => "submit"} Save
-  or
-  = link_to "Cancel", wikipages_path
+	%button{:class => "btn primary", :type => "submit"} Save
+	or
+	= link_to "Cancel", wikipages_path
+

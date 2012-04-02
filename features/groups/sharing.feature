@@ -19,6 +19,7 @@ Feature: Group sharing
 	Scenario: creating a new wiki page from the group page
 		Given the user is logged in
 		When the user posts a wikipage from the group
-		Then an activity of creating that wikipage should appear in the content stream of the group
+		Then he should be redirected to the group page
+		And an activity of creating that wikipage should appear in the content stream of the group
 			And an activity of creating that wikipage should appear in the content stream of the user
 

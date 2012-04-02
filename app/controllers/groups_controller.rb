@@ -20,6 +20,16 @@ class GroupsController < ApplicationController
       :action_object_type => @group.class.to_s,
     )
 
+    @group_wikipages = @group.following_wikipages
+    @group_wikipages_ids = @group_wikipages.map do |wikipage|
+      wikipage.id
+    end
+
+    @content_stream = Activity.where(
+      :action_object_id => @group_wikipages_ids,
+      :action_object_type => "Wikipage"
+    )
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }

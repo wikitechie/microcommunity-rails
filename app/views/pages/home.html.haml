@@ -6,8 +6,9 @@
     -else
       %ul
         - @activities.each do |activity|
-          %li
+          %p
             = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+          %hr
 
 .span4
   = link_to "Create a group",new_group_path ,:class => "btn btn-large"

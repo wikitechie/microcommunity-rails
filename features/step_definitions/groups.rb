@@ -63,3 +63,20 @@ Then /^he should be the admin of the group$/ do
   @last_group.memberships.find_by_user_id(@user.id).admin?.should be_true
 end
 
+When /^the user posts a wikipage from the group$/ do
+  visit group_path(@group)
+
+  @wikipage = FactoryGirl.build(:wikipage)
+  fill_in "wikipage_title", :with => @wikipage.title
+  fill_in "wikipage_body", :with => @wikipage.body
+  find_button("Save").click
+end
+
+Then /^an activity of creating that wikipage should appear in the content stream of the group$/ do
+  page.should have_content "#{@user.profile.name} created a new wiki page titled #{@wikipage.title}"
+end
+
+Then /^an activity of creating that wikipage should appear in the content stream of the user$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
