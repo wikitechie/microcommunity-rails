@@ -31,7 +31,9 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "cucumber-rails", :group => [:development, :test]
+gem "cucumber-rails", :group => [:test]
+gem "rspec", :group => [:test]
+gem "autotest", :group => [:test]
 gem 'database_cleaner', :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
 gem "factory_girl_rails", :group => [:development, :test]
@@ -44,5 +46,3 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 #social gems
 gem "acts_as_follower"
 gem "devise"
-
-
