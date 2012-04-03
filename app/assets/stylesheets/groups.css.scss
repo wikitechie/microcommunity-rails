@@ -1,3 +1,16 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#group-publisher{
+  padding: 1em;
+  border-style: outset;
+  background-color: gray;
+}
+
+#group-publisher {
+  #post_text {
+    width: 98%;
+    height: 100px;
+  }
+}

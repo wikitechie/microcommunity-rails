@@ -45,7 +45,7 @@ class PostsController < ApplicationController
       @post = Post.new(params[:post])
       @post.owner_id = @group.id
       @post.owner_type = "Group"
-      @post.user_id = current_user.id
+      @post.user = current_user
       respond_to do |format|
         if @post.save
           format.html { redirect_to :back, notice: 'Post was successfully created.' }
@@ -86,4 +86,3 @@ class PostsController < ApplicationController
     end
   end
 end
-

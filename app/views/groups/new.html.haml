@@ -1,5 +1,11 @@
-%h1 New group
+-if user_signed_in?
+  %h1 New group
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', groups_path
+  = link_to 'Back', groups_path
+-else
+  = "Sorry you must "
+  = link_to 'Sign in', '/users/sign_in'
+  = "or if you don't have account you can"
+  = link_to 'Sign up', '/users/sign_up'
