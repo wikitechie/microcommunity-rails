@@ -22,9 +22,7 @@ class Activity < ActiveRecord::Base
       else
         return verb
       end
-
     end
   end
-
 end
 

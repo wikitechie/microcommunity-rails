@@ -25,6 +25,7 @@ class WikipagesController < ApplicationController
   # GET /wikipages/new.json
   def new
     @wikipage = Wikipage.new
+    revision = Revision.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +43,11 @@ class WikipagesController < ApplicationController
   def create
     @wikipage = Wikipage.new(params[:wikipage])
     @wikipage.user_id = current_user.id
+
+    @revision = Revision.new
+    @revision.wikipage_id = @wikipage.id
+    #TODO add title of revision
+    @revision.user_id = current_user.id
 
     if @wikipage.save
       if params.has_key?(:group_id)

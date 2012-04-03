@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328201419) do
+ActiveRecord::Schema.define(:version => 20120402153307) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(:version => 20120328201419) do
     t.string   "title"
     t.text     "body"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "revisions", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "wikipage_id"
+    t.string   "edit_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

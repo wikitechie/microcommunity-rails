@@ -1,0 +1,18 @@
+%h1 Listing revisions
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @revisions.each do |revision|
+
+    %tr
+      %td= link_to 'Show', revision
+      %td= link_to 'Edit', edit_revision_path(revision)
+      %td= link_to 'Destroy', revision, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Revision', new_revision_path
