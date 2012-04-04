@@ -1,14 +1,33 @@
 .span4
   .activity
     %h2 News Feed
-    -if @activites.nil?
-      Your news feed has nothing yet
-    -else
-      %ul
-        - @activities.each do |activity|
-          %p
-            = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
-          %hr
+    #user-publisher
+      = form_for [@post] do |f|
+        %p
+          = f.text_area :text, :size => "80x2"
+        %p
+          = f.submit("Post", :class => "btn")
+    #social-stream
+      - current_user.posts.each do |post|
+        %p
+          .post
+            -if not post.user.nil?
+              = "#{post.user.profile.name} posted"
+              %br
+              .post_body
+                = "#{post.text}"
+              .post_link
+                = link_to 'Like', '#'
+                = link_to 'comment', '#'
+        %hr
+      -if @activites.nil?
+        Your news feed has nothing yet
+      -else
+        %ul
+          - @activities.each do |activity|
+            %p
+              = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+            %hr
 
 .span4
   = link_to "Create a group",new_group_path ,:class => "btn btn-large"
@@ -39,4 +58,3 @@
       %div{:class => "tab-pane", :id => "#post-tab"}
         %p
           Howdy, I'm in Section 2.
-

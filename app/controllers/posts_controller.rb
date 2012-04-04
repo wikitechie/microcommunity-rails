@@ -46,6 +46,15 @@ class PostsController < ApplicationController
       @post.owner_id = @group.id
       @post.owner_type = "Group"
       @post.user = current_user
+    else
+      if user_signed_in?
+        @post = Post.new(params[:post])
+        @post.owner_id = current_user.id
+        @post.owner_type = "User"
+        @post.user = current_user
+      end
+    end
+    if user_signed_in? || params.has_key?(:group_id)
       respond_to do |format|
         if @post.save
           format.html { redirect_to :back, notice: 'Post was successfully created.' }

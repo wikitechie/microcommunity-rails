@@ -15,8 +15,16 @@
 		#social-stream
 			- @group.posts.each do |post|
 				%p
-					-if not post.user.nil?
-						= "#{post.user.profile.name} posted \"#{post.text}\""
+					.post
+						-if not post.user.nil?
+							= "#{post.user.profile.name} posted"
+							%br
+							.post_body
+								= "#{post.text}"
+							.post_link
+								= link_to 'Like', '#'
+								= link_to 'comment', '#'
+				%hr
 			- @group_activity.each do |activity|
 				%p
 					= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"

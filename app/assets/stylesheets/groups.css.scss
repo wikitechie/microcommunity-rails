@@ -6,11 +6,39 @@
   padding: 1em;
   border-style: outset;
   background-color: gray;
+  height: 150px;
 }
 
 #group-publisher {
   #post_text {
     width: 98%;
     height: 100px;
+  }
+}
+
+#group-publisher {
+  .btn {
+    float: right;
+  }
+}
+
+#social-stream {
+  .post{
+    padding-top: 0.5em;
+    background-color: #999;
+    padding-left: 0.5em;
+    color: black;
+  }
+}
+#social-stream {
+  .post_body {
+    padding-left: 1em;
+  }
+}
+
+#social-stream {
+  .post_link {
+    background-color: gainsboro;
+    width: 98%;
   }
 }
