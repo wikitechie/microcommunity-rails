@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :revisions
   has_many :events
   has_many :posts
+  has_many :comments
 
   has_many :friendships
   has_many :friends, :through => :friendships
@@ -36,4 +37,3 @@ class User < ActiveRecord::Base
 
 
 end
-

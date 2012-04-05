@@ -1,13 +1,16 @@
 Microcommunity::Application.routes.draw do
 
-  
 
-  resources :comments
 
-  resources :posts
+
+  resources :posts do
+    resources :comments
+  end
 
   resources :groups do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
   end
 
   resources :attendances
@@ -85,4 +88,3 @@ Microcommunity::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
-

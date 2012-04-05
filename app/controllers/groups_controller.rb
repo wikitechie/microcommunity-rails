@@ -15,6 +15,11 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @post = @group.posts.new
+    if not @group.posts.nil?
+      @group.posts.each do |post|
+        @comment = post.comments.new
+      end
+    end
     @group_activity = Activity.where(
       :action_object_id => @group.id,
       :action_object_type => @group.class.to_s,
@@ -99,4 +104,3 @@ class GroupsController < ApplicationController
     end
   end
 end
-

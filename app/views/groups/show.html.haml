@@ -24,6 +24,11 @@
 							.post_link
 								= link_to 'Like', '#'
 								= link_to 'comment', '#'
+					= form_for [@group, @post, @comment] do |fr|
+						%p
+							= fr.text_area :body, :size => "10x50"
+						%p
+							= fr.submit("Comment", :class => "btn")
 				%hr
 			- @group_activity.each do |activity|
 				%p
