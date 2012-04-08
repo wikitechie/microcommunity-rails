@@ -162,6 +162,7 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
+    shoulda-matchers (1.0.0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -207,6 +208,7 @@ DEPENDENCIES
   rspec
   rspec-rails (>= 2.0.1)
   sass-rails (~> 3.1.5)
+  shoulda-matchers
   sqlite3
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

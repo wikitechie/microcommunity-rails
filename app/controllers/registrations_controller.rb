@@ -9,8 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
         @user = User.find_by_email(params[:user][:email])
-        Profile.create(:user_id => @user.id, :name => params[:name])
-        #@profile.update_attributes( name: "User", bio: "Do not have a bio yet")
+        Profile.create!(:user_id => @user.id, :name => params[:name])
         respond_with resource, :location => after_sign_up_path_for(resource)
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
@@ -35,3 +34,4 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
 end
+

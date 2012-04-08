@@ -33,6 +33,7 @@ end
 
 gem "cucumber-rails", :group => [:test]
 gem "rspec", :group => [:test]
+gem 'shoulda-matchers', :group => [:test]
 gem "autotest", :group => [:test]
 gem 'database_cleaner', :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
@@ -46,3 +47,4 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 #social gems
 gem "acts_as_follower"
 gem "devise"
+
