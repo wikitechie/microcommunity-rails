@@ -8,7 +8,7 @@ describe Post do
     @post.text = nil
     @post.should_not be_valid
   end
-  it "should have a user" do
+  it "should belong to a user" do
     @post.should respond_to :user
   end
   it "should have an owner" do

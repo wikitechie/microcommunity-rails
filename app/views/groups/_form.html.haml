@@ -11,7 +11,7 @@
     = f.text_field :name
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, :size => "30x5"
   .actions
-    = f.submit 'Create Group'
+    = f.submit 'Create Group', :class => "btn"
 
