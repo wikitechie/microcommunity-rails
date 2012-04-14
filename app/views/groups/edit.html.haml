@@ -1,7 +1,3 @@
-%h1 Editing group
-
-= render 'form'
-
-= link_to 'Show', @group
-\|
-= link_to 'Back', groups_path
+= form_for @group, :url => group_path(@group), :html => { :class => "edit_group", :id => "edit_group" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "form", :locals => {:f => f}

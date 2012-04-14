@@ -11,10 +11,13 @@
 //= require twitter/bootstrap
 //= require bootstrap-tab
 //= require bootstrap-modal
+//= require bootstrap-dropdown
 
     $('.modal').modal({
     keyboard: false
     })
+
+    $('.dropdown-toggle').dropdown()
 
     $('#post-tab').tab('show')
 

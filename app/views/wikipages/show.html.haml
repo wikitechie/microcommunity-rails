@@ -1,7 +1,22 @@
 %h1= @wikipage.title
+
 %p= @wikipage.body
 
 .form-actions
-  = link_to "Back", wikipages_path, :class => 'btn'
-  = link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
-  = link_to "Delete", wikipage_path(@wikipage), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'
+	= link_to "Back", :back, :class => 'btn'
+	= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
+	:plain
+		<div class="btn dropdown" id="menu1">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+		Add to group
+		<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+		<li><a href="#">Action</a></li>
+		<li><a href="#">Another action</a></li>
+		<li><a href="#">Something else here</a></li>
+		<li class="divider"></li>
+		<li><a href="#">Separated link</a></li>
+		</ul>
+		</div>
+

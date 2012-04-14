@@ -1,17 +1,13 @@
-= form_for @group do |f|
-  -if @group.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
-      %ul
-        - @group.errors.full_messages.each do |msg|
-          %li= msg
+.clearfix
+  = f.label :name, t("activerecord.attributes.group.name", :default => "Name"), :class => :label
+  .input
+    = f.text_field :name, :class => 'text_field'
+.clearfix
+  = f.label :description, t("activerecord.attributes.group.description", :default => "Description"), :class => :label
+  .input
+    = f.text_area :description, :class => 'text_area'
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description, :size => "30x5"
-  .actions
-    = f.submit 'Create Group', :class => "btn"
-
+.form-actions
+  %button{:class => "btn primary", :type => "submit"} Save
+  or
+  = link_to "Cancel", groups_path

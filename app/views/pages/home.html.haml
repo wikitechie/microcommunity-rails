@@ -1,42 +1,16 @@
-.span4
-  .activity
-    %h2 News Feed
-    -if @activites.nil?
-      Your news feed has nothing yet
-    -else
-      %ul
-        - @activities.each do |activity|
-          %p
-            = "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
-          %hr
-
-.span4
-  = link_to "Create a group",new_group_path ,:class => "btn btn-large"
-  %hr
-  .tabbable
-    %ul{:class => "nav nav-tabs"}
-      %li.active
-        :plain
-          <a href="#wiki-tab" data-toggle="tab">Wikipage</a>
-      %li
-        :plain
-          <a href="#post-tab" data-toggle="tab">Question</a>
-    %div{:class => "tab-content"}
-      %div{:class => "tab-pane active", :id => "#wiki-tab"}
-        %p
-          %div
-            = form_for @wikipage do |f|
-              %p
-                = f.label :title, "Title"
-              %p
-                = f.text_field :title,  :placeholder => "Title for your wiki page"
-              %p
-                = f.label :body, "Body"
-              %p
-                = f.text_area :body, :cols => 5, :rows => 3, :placeholder => "Type something…"
-              %p
-                = f.submit "Post", :class => "btn"
-      %div{:class => "tab-pane", :id => "#post-tab"}
-        %p
-          Howdy, I'm in Section 2.
+.row
+	.span4
+		%h1 News Feed
+	.span4
+		= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
+		= link_to "Create a group",new_group_path ,:class => "btn btn-large"
+.row
+	.span8
+		-if @activites.nil?
+			%p.lead Your news feed has nothing yet
+		-else
+			%ul
+				- @activities.each do |activity|
+					%p
+						= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
 

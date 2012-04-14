@@ -1,21 +1,19 @@
-%h1 Listing groups
-
-%table
-  %tr
-    %th Name
-    %th Description
-    %th
-    %th
-    %th
-
-  - @groups.each do |group|
+%h1 Groups
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= group.name
-      %td= group.description
-      %td= link_to 'Show', group
-      %td= link_to 'Edit', edit_group_path(group)
-      %td= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete
+      %th
+        = t("activerecord.attributes.group.name", :default => t("activerecord.labels.name", :default => "Name"))
+      %th Description
+      %th
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= link_to group.name, group_path(group)
+        %td= group.description
+        %td
+          = link_to "Join", group_path(group), :class => 'btn'
+          = link_to "View", group_path(group), :class => 'btn'
 
-%br
+= link_to "New", new_group_path, :class => 'btn btn-primary'
 
-= link_to 'New Group', new_group_path

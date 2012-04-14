@@ -27,8 +27,8 @@
       <div class="nav-collapse">
         <ul class="nav">
           <li class="active"><%= link_to "Home", root_path %></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><%= link_to "Groups", groups_path %></li>
+          <li><%= link_to "Wiki", wikipages_path %></li>
         </ul>
         <p class="navbar-text pull-right">
 			<% if user_signed_in? %>
@@ -44,47 +44,17 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <div class="well sidebar-nav">
-        <ul class="nav nav-list">
-
-          <li class="nav-header">Groups</li>
-          <li class="active"><a href="#">Study</a></li>
-          <li><a href="#">Research</a></li>
-          <li><a href="#">Ideas</a></li>
-
-          <li class="nav-header">Tags</li>
-          <li><a href="#">MicroCommunity</a></li>
-          <li><a href="#">Rails</a></li>
-          <li><a href="#">Web 2.0</a></li>
-
-          <li class="nav-header">Sidebar</li>
-          <li><a href="questions">Questions</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-        </ul>
-      </div><!--/.well -->
-    </div><!--/span-->
-
-    <div class="row span9">
-   	<% unless alert.blank? %><div class="alert alert-error"><%= alert %><a class="close" data-dismiss="alert">×</a></div> <% end %>
-		<% unless notice.blank? %><div class="alert alert-success"><%= notice %><a class="close" data-dismiss="alert">×</a></div> <% end %>
-		</div>
-		<div class= "row span9">
-		<%= yield %>
-		</div>
-
-  </div><!--/row-->
-
-  <hr>
-
-  <footer>
+<div class="container">
+  <div class="span8 offset2">
+    <% unless alert.blank? %><div class="alert alert-error row"><%= alert %><a class="close" data-dismiss="alert">×</a></div> <% end %>
+    <% unless notice.blank? %><div class="alert alert-success row"><%= notice %><a class="close" data-dismiss="alert">×</a></div> <% end %>
+    <%= yield %>
+    <hr>
+    <footer>
     <p>MicroCommunity 2012</p>
-  </footer>
-
-</div><!--/.fluid-container-->
+    </footer>
+  </div>
+</div><!--/.container-->
 
 </body>
 </html>
