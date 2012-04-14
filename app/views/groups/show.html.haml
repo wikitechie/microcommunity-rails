@@ -1,24 +1,27 @@
 .row
+	%h1
+		= @group.name
+	%p
+		= @group.description
+	%hr
+.row
 	.span5
-		%h1
-			= @group.name
-		%p
-			= @group.description
-		%hr
 		#group-publisher
 			= form_for @post do |f|
 				%p
 					= f.text_area :text, :size => "80x2"
-					= f.hidden_field :user_id, :class => 'number_field'
+					= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
 					= f.hidden_field :owner_type, :value => @group.class.to_s
 					= f.hidden_field :owner_id, :value => @group.id
 				%p
 					= f.submit("Post", :class => "btn")
 		%hr
 		#social-stream
-			- @group.posts.each do |post|
-				%p
-					= "#{post.user.profile.name} posted \"#{post.text}\""
+			- unless @group.posts.empty?
+				- @group.posts.each do |post|
+					- if post.valid?
+						%p
+							= "#{post.user.profile.name} posted \"#{post.text}\""
 			- @group_activity.each do |activity|
 				%p
 					= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"

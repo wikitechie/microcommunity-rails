@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true
 
   validates :text, :presence => true
+  validates_associated :user
 
 end
 
