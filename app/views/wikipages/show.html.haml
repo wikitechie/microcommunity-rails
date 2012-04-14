@@ -1,22 +1,23 @@
-%h1= @wikipage.title
+.row
+	.span5
+		%h1= @wikipage.title
 
-%p= @wikipage.body
-
-.form-actions
-	= link_to "Back", :back, :class => 'btn'
-	= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
-	:plain
-		<div class="btn dropdown" id="menu1">
-		<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+	.span3
+		<ul class="nav nav-pills">
+		<li class="dropdown">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 		Add to group
 		<b class="caret"></b>
 		</a>
 		<ul class="dropdown-menu">
-		<li><a href="#">Action</a></li>
-		<li><a href="#">Another action</a></li>
-		<li><a href="#">Something else here</a></li>
-		<li class="divider"></li>
-		<li><a href="#">Separated link</a></li>
+		%li <a>Group 1</a>
 		</ul>
-		</div>
+		</li>
+		%li= link_to "Back", :back, :class => 'btn'
+		%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
+		</ul>
+
+.row
+	.span8
+		%p= @wikipage.body
 
