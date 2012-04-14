@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
     @group_activity = Activity.where(
       :action_object_id => @group.id,
       :action_object_type => @group.class.to_s,
-    )
+    ).order("updated_at DESC")
 
     @group_wikipages = @group.following_wikipages
     @group_wikipages_ids = @group_wikipages.map do |wikipage|
@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     @content_stream = Activity.where(
       :action_object_id => @group_wikipages_ids,
       :action_object_type => "Wikipage"
-    )
+    ).order("updated_at DESC")
 
     respond_to do |format|
       format.html # show.html.erb

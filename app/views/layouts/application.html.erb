@@ -69,12 +69,12 @@
     </div><!--/span-->
 
     <div class="row span9">
-   	<% unless alert.blank? %><div class="alert alert-error row span9"><%= alert %></div> <% end %>
-		<% unless notice.blank? %><div class="alert alert-success row span9"><%= notice %></div> <% end %>
+   	<% unless alert.blank? %><div class="alert alert-error"><%= alert %><a class="close" data-dismiss="alert">×</a></div> <% end %>
+		<% unless notice.blank? %><div class="alert alert-success"><%= notice %><a class="close" data-dismiss="alert">×</a></div> <% end %>
+		</div>
 		<div class= "row span9">
 		<%= yield %>
 		</div>
-    </div>
 
   </div><!--/row-->
 

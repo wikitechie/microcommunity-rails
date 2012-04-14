@@ -1,9 +1,10 @@
 .row
-	%h1
-		= @group.name
-	%p
-		= @group.description
-	%hr
+	.span9
+		%h1
+			= @group.name
+		%p
+			= @group.description
+		%hr
 .row
 	.span5
 		#group-publisher
@@ -18,7 +19,7 @@
 		%hr
 		#social-stream
 			- unless @group.posts.empty?
-				- @group.posts.each do |post|
+				- @group.posts.order("created_at DESC").each do |post|
 					- if post.valid?
 						%p
 							= "#{post.user.profile.name} posted \"#{post.text}\""
