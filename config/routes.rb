@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  get "group_follows/create"
+
   resources :posts
 
   resources :groups do
