@@ -15,11 +15,18 @@ Feature: Group sharing
 		Then the user should be redirected to the group page
 			And a post with content "Hello, World!"  should appear in the social stream
 
-@isstaif
 	Scenario: creating a new wiki page from the group page
 		Given the user is logged in
 		When the user posts a wikipage from the group
 		Then he should be redirected to the group page
 		And an activity of creating that wikipage should appear in the content stream of the group
 			And an activity of creating that wikipage should appear in the content stream of the user
+
+	@isstaif
+	Scenario: adding a foreign wiki page to a group
+		Given the user is logged in
+			And a wikipage exists
+		When the user adds the wikipage to the group
+			And some action is performed on the wikipage
+		Then that action should appear on the group content feed
 
