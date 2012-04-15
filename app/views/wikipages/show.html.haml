@@ -3,19 +3,20 @@
 		%h1= @wikipage.title
 
 	.span3
-		<ul class="nav nav-pills">
-		<li class="dropdown">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-		Add to group
-		<b class="caret"></b>
-		</a>
-		<ul class="dropdown-menu">
-		%li <a>Group 1</a>
-		</ul>
-		</li>
-		%li= link_to "Back", :back, :class => 'btn'
-		%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
-		</ul>
+		%ul.nav.nav-pills
+			%li.dropdown
+				:plain
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						Add to group
+						<b class="caret"></b>
+					</a>
+				- unless current_user.nil?
+					%ul.dropdown-menu
+						- current_user.groups.each do |group|
+							%li
+								= link_to group.name, @group
+			%li= link_to "Back", :back, :class => 'btn'
+			%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
 
 .row
 	.span8

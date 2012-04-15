@@ -80,3 +80,19 @@ Then /^an activity of creating that wikipage should appear in the content stream
   pending # express the regexp above with the code you wish you had
 end
 
+When /^the user adds the wikipage to the group$/ do
+  visit wikipage_path(@wikipage)
+  click_link @group.name
+end
+
+When /^some action is performed on the wikipage$/ do
+  visit edit_wikipage_path @wikipage
+  fill_in "Body", :with => @wikipage.body
+  click_button "Save"
+end
+
+Then /^that action should appear on the group content feed$/ do
+  visit group_path @group
+  page.should have_content "#{@user.profile.name} edited a wiki page titled #{@wikipage.title}"
+end
+
