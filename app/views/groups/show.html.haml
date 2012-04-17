@@ -1,31 +1,27 @@
 .row
-	.span12
+	.span9.page-header
 		%h1
 			= @group.name
 		%p
 			= @group.description
-		%hr
 .row
-	.span5
+	.span4
 		- if @group.users.include?(current_user)
-			#group-publisher.well
-				.row
-					.span12
-						= form_for @post do |f|
-							%p
-								= f.text_area :text,  :class => "span4", :rows => 2
-								= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
-								= f.hidden_field :owner_type, :value => @group.class.to_s
-								= f.hidden_field :owner_id, :value => @group.id
-							%p
-								= f.submit("Post", :class => "btn")
+			#group-publisher
+				= form_for @post do |f|
+					%p
+						= f.text_area :text,  :class => "span4", :rows => 2
+						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
+						= f.hidden_field :owner_type, :value => @group.class.to_s
+						= f.hidden_field :owner_id, :value => @group.id
+					%p= f.submit("Post", :class => "btn")
 
 		#social-stream
 			- unless @group.posts.empty?
 				%table.table.table-condensed
 					= render @group.posts.order("created_at DESC") + @group_activity
 
-	.span6
+	.span5
 		#content-stream
 			- if @group.users.include?(current_user)
 				%p
@@ -38,16 +34,16 @@
 					- @content_stream.each do |activity|
 						= render activity
 
-	.modal#wiki-modal
-		.modal-header
-			%a.close{"data-dismiss"=>"modal"}
-				×
-			%h3 New wikipage
-		.modal-body
-			- @wikipage = Wikipage.new
-			= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
-				= render :partial => "wikipages/form", :locals => {:f => f}
-		.modal-footer
-			%a.btn Close
-			%a.btn.btn-primary Save changes
+.modal#wiki-modal
+	.modal-header
+		%a.close{"data-dismiss"=>"modal"}
+			×
+		%h3 New wikipage
+	.modal-body
+		- @wikipage = Wikipage.new
+		= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
+			= render :partial => "wikipages/form", :locals => {:f => f}
+	.modal-footer
+		%a.btn Close
+		%a.btn.btn-primary Save changes
 

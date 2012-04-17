@@ -14,17 +14,12 @@
 //= require bootstrap-dropdown
 //= require bootstrap-popover
 
-$('.modal').modal({
-keyboard: false
-})
-
-$('.dropdown-toggle').dropdown()
-
-$('#post-tab').tab('show')
 
 $(document).ready(function(){
-	    $('.modal').hide();
-	    $('.tabbable').tab('show')
-
+		$('.modal').modal({
+			keyboard: false
+		});
+		$('.dropdown-toggle').dropdown();
+    $('.modal').hide();
 });
 

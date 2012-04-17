@@ -1,12 +1,12 @@
-.span12
+.span8
 	.row.page-header
-		%h1.span8 Groups
-		.span4
+		%h1.span6 Groups
+		.span2
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 
 	.row
 		- @groups.each do |group|
-			.well.span4
+			.well.span3
 				%h2= link_to group.name, group_path(group)
 				%p= group.description
 				.nav.nav-pills
