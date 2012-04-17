@@ -3,7 +3,18 @@ require 'spec_helper'
 describe RegistrationsController do
 
   def valid_attributes
-    FactoryGirl.attributes_for(:user)
+    @creator = FactoryGirl.create(:user)
+    User.current_user = @creator
+    @group = FactoryGirl.create(:group)
+
+    @user = FactoryGirl.create(:user)
+    @group.memberships.create(:user_id => @user.id)
+    User.current_user = @user
+
+    {
+      :group_id => @group.id,
+      :user_id => @user.id
+    }
   end
 
   before :each do
@@ -13,7 +24,7 @@ describe RegistrationsController do
 
   describe "POST 'create'" do
     describe "with valid params" do
-      it "creates a new User" do
+      it "creates a new Membership" do
         expect {
           post :create, {:user => valid_attributes, :name => "Boo"}
         }.to change(User, :count).by(1)

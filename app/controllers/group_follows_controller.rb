@@ -1,7 +1,5 @@
 class GroupFollowsController < ApplicationController
   def create
-
-    puts params.to_s
     @group = Group.find(params[:group_id])
     @user = User.find(params[:user_id])
 
