@@ -4,6 +4,8 @@
   %b Name:
   = @profile.name
 %p
+  = image_tag avatar_url(@profile.user)
+%p
   %b Bio:
   = @profile.bio
 %p
@@ -15,3 +17,4 @@
   \|
 
 = link_to 'Back', profiles_path
+
