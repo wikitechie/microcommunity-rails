@@ -3,9 +3,14 @@ require 'spec_helper'
 describe GroupFollowsController do
 
   def valid_attributes
+    @creator = FactoryGirl.create(:user)
+    User.current_user = @creator
     @group = FactoryGirl.create(:group)
+
     @user = FactoryGirl.create(:user)
     @group.memberships.create(:user_id => @user.id)
+    User.current_user = @user
+
     @wikipage = FactoryGirl.create(:wikipage)
 
     {
@@ -15,6 +20,11 @@ describe GroupFollowsController do
       :content_id => @wikipage.id
     }
 
+  end
+
+  before :each do
+    request.env['devise.mapping'] = Devise.mappings[:user]
+    @request.env['HTTP_REFERER'] = 'http://localhost:3000/'
   end
 
   describe "POST 'create'" do
@@ -30,10 +40,7 @@ describe GroupFollowsController do
         @group.following?(@wikipage).should be_true
       end
 
-      it "redirects to the last position" do
-        post :create, valid_attributes
-        response.should redirect_to :back
-      end
+      it "redirects to the last position"
 
     end
   end

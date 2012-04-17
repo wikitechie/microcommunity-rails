@@ -1,6 +1,6 @@
 Microcommunity::Application.routes.draw do
 
-  get "group_follows/create"
+  post "group_follows/create"
 
   resources :posts
 
@@ -20,6 +20,9 @@ Microcommunity::Application.routes.draw do
 
   root :to => 'pages#home'
   match "home" => "pages#home"
+  match "home" => "pages#home"
+
+
   match "questions" =>"questions"
 
   devise_for :users, :controllers => { :registrations => "registrations" }
