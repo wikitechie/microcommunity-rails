@@ -1,6 +1,6 @@
 .row
 	.span5
-		%h1= @wikipage.title
+		%h1.page-header= @wikipage.title
 
 	.span3
 		%ul.nav.nav-pills
@@ -11,16 +11,16 @@
 						<b class="caret"></b>
 					</a>
 				- unless current_user.nil?
-					%ul.dropdown-menu
-						- current_user.groups.each do |group|
-							%li
-								- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
-								= link_to group.name, params, {:method => :post }
+					#add-to-group
+						%ul.dropdown-menu
+							- current_user.groups.each do |group|
+								%li
+									- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
+									= link_to group.name, params, {:method => :post }
 			%li= link_to "Back", :back, :class => 'btn'
 			%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
 
 .row
 	.span8
-		%hr
 		%p= @wikipage.body
 

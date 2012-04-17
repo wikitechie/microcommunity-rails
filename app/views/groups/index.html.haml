@@ -1,19 +1,17 @@
-%h1 Groups
-%table{:class => "table table-striped"}
-  %thead
-    %tr
-      %th
-        = t("activerecord.attributes.group.name", :default => t("activerecord.labels.name", :default => "Name"))
-      %th Description
-      %th
-  %tbody
-    - @groups.each do |group|
-      %tr
-        %td= link_to group.name, group_path(group)
-        %td= group.description
-        %td
-          = link_to "Join", group_path(group), :class => 'btn'
-          = link_to "View", group_path(group), :class => 'btn'
+.span12
+	.row.page-header
+		%h1.span8 Groups
+		.span4
+			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 
-= link_to "New", new_group_path, :class => 'btn btn-primary'
+	.row
+		- @groups.each do |group|
+			.well.span4
+				%h2= link_to group.name, group_path(group)
+				%p= group.description
+				.nav.nav-pills
+					- unless current_user.nil?
+						- unless group.users.include?(current_user)
+							= link_to "Join", group_path(group), :class => 'btn btn-primary'
+					= link_to "View", group_path(group), :class => 'btn'
 
