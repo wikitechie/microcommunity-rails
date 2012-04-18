@@ -96,3 +96,14 @@ Then /^that action should appear on the group content feed$/ do
   page.should have_content "#{@user.profile.name} edited a wiki page titled #{@wikipage.title}"
 end
 
+
+Then /^he should be redirected to the wikipage page$/ do
+  current_path.should == wikipage_path(@wikipage)
+end
+
+Then /^the add to group button of the group should be ticked$/ do
+  within("#add-to-group") do
+    page.should have_selector "i"
+  end
+end
+

@@ -5,7 +5,11 @@ class GroupFollowsController < ApplicationController
 
     if @group.users.include?(@user)
       @content =  Kernel.const_get(params[:content_type]).find(params[:content_id])
-      @group.follow(@content)
+      if (@group.following?(@content))
+        @group.stop_following(@content)
+      else
+        @group.follow(@content)
+      end
     end
 
     respond_to do |format|

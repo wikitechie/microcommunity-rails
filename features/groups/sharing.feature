@@ -28,5 +28,7 @@ Feature: Group sharing
 			And a wikipage exists
 		When the user adds the wikipage to the group
 			And some action is performed on the wikipage
-		Then that action should appear on the group content feed
+		Then he should be redirected to the wikipage page
+			And the add to group button of the group should be ticked
+			And that action should appear on the group content feed
 

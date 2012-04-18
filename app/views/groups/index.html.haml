@@ -15,10 +15,10 @@
 			.span3.well
 				%h2= link_to group.name, group_path(group)
 				%p= group.description
-				%table
+				%table.pull-right
 					%tr
 						- unless current_user.nil?
 							- unless group.users.include?(current_user)
 								%td= button_to "Join", group_path(group), :class => 'btn btn-primary'
-						%td= button_to "View", group_path(group), :class => 'btn'
+						%td= button_to "View", group_path(group), :class => 'btn', :method => :get
 

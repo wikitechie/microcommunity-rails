@@ -1,25 +1,28 @@
-.row
-	.span9.page-header
-		.span5
-			%h1= @wikipage.title
+.row.page-header
+	.span6
+		%h1= @wikipage.title
 
-		.span3
-			%ul.nav.nav-pills
-				%li.dropdown
-					:plain
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-							Add to group
-							<b class="caret"></b>
-						</a>
-					- unless current_user.nil?
-						#add-to-group
-							%ul.dropdown-menu
-								- current_user.groups.each do |group|
-									%li
-										- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
-										= link_to group.name, params, {:method => :post }
-				%li= link_to "Back", :back, :class => 'btn'
-				%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
+	.span3
+		%ul.nav.nav-pills.pull-right
+			%li.dropdown
+				:plain
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						Add/Remove
+						<b class="caret"></b>
+					</a>
+				- unless current_user.nil?
+					#add-to-group
+						%ul.dropdown-menu
+							- current_user.groups.each do |group|
+								%li
+									- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
+									= link_to( params, {:method => :post},:id => "group-#{group.id}") do
+										-if group.following?(@wikipage)
+											%i.icon-ok
+										= group.name
+
+			%li= link_to "Back", :back, :class => 'btn'
+			%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
 
 .row
 	.span9
