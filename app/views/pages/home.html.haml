@@ -1,13 +1,25 @@
-.row
-	.span4
+.row.page-header
+	.span5
 		%h1 News Feed
 	.span4
-		= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
-		= link_to "Create a group",new_group_path ,:class => "btn btn-large"
+		.pull-right
+			= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
+			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
-	.span8
+	.span9
 		-if @activites.nil?
-			%p.lead Your news feed has nothing yet
+			.well.alert
+				%p Hey it seems you are new! You can do the following!
+				%ul
+					%li
+						%i.icon-zoom-out
+						Explore existing groups or create your own group!
+					%li
+						%i.icon-user
+						Explore people and follow who you like!
+					%li
+						%i.icon-book
+						Explore existing wiki pages, create your own!
 		-else
 			%ul
 				- @activities.each do |activity|

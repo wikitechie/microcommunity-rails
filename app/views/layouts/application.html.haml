@@ -34,6 +34,7 @@
               %li= link_to "Home", root_path
               %li= link_to "Groups", groups_path
               %li= link_to "Wiki", wikipages_path
+              %li= link_to "People", profiles_path
             .navbar-text.pull-right
               - if user_signed_in?
                 = "Logged in as"
@@ -68,6 +69,7 @@
                 %li= link_to "Link 3", "/path3"
 
       %footer
+        %hr
         %p &copy; Microcommunity 2012
     /
       Le javascript

@@ -11,9 +11,9 @@ Scenario: wiki page creation
 	When the followed user creates a new wiki page
 	Then the according activity element should appear on the users news feed
 
-@focus
 Scenario: loading an empty news feed
   Given a user exists
     And the user is logged in
   When the user vists his home page
   Then he should see that there is nothing
+
