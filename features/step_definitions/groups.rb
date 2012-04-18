@@ -107,3 +107,13 @@ Then /^the add to group button of the group should be ticked$/ do
   end
 end
 
+
+When /^the user clicks the join button of the group$/ do
+  visit group_path @group
+  click_button "join-group"
+end
+
+Then /^he should be a member of the group$/ do
+  page.should_not have_css("#join-group")
+end
+

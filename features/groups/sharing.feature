@@ -22,7 +22,6 @@ Feature: Group sharing
 		And an activity of creating that wikipage should appear in the content stream of the group
 			And an activity of creating that wikipage should appear in the content stream of the user
 
-	@isstaif
 	Scenario: adding a foreign wiki page to a group
 		Given the user is logged in
 			And a wikipage exists

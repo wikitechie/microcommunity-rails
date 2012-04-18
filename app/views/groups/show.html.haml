@@ -1,9 +1,14 @@
-.row
-	.span9.page-header
+.row.page-header
+	.span6
 		%h1
 			= @group.name
 		%p
 			= @group.description
+	.span3
+		- unless current_user.nil?
+			- unless @group.users.include?(current_user)
+				- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => @group.id, :user_id => current_user.id} }
+				= button_to "Join", params, :class => "btn btn-primary btn-large pull-right", :id => "join-group"
 .row
 	.span4
 		- if @group.users.include?(current_user)

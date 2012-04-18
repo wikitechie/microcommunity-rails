@@ -49,7 +49,15 @@
       .content
         .row
           .span9
-            = yield
+            - unless notice.nil?
+              .row
+                .span9
+                  .alert.alert-info
+                    <a class="close" data-dismiss="alert">×</a>
+                    = notice
+            .row
+              .span9
+                = yield
           .span3
             .well.sidebar-nav
               %h3 Sidebar
