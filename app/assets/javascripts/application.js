@@ -16,10 +16,8 @@
 
 
 $(document).ready(function(){
-		$('.modal').modal({
-			keyboard: false
-		});
+
 		$('.dropdown-toggle').dropdown();
-    $('.modal').hide();
+
 });
 

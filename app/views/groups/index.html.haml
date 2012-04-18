@@ -1,17 +1,24 @@
-.span8
-	.row.page-header
-		%h1.span6 Groups
-		.span2
-			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
+.row
+	.span9
+		.page-header
+			.row
+				.span6
+					%h1 Groups
+				.span3
+					= link_to "Create a group",new_group_path ,:class => "btn btn-large pull-right"
 
+
+
+.offset1
 	.row
 		- @groups.each do |group|
-			.well.span3
+			.span3.well
 				%h2= link_to group.name, group_path(group)
 				%p= group.description
-				.nav.nav-pills
-					- unless current_user.nil?
-						- unless group.users.include?(current_user)
-							= link_to "Join", group_path(group), :class => 'btn btn-primary'
-					= link_to "View", group_path(group), :class => 'btn'
+				%table
+					%tr
+						- unless current_user.nil?
+							- unless group.users.include?(current_user)
+								%td= button_to "Join", group_path(group), :class => 'btn btn-primary'
+						%td= button_to "View", group_path(group), :class => 'btn'
 
