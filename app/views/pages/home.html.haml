@@ -10,4 +10,6 @@
 		%table.table.table-condensed
 			- @activities.each do |activity|
 				= render activity
+		- if @getting_started
+			= render "shared/getting_started"
 

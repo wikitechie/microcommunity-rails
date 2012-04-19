@@ -10,6 +10,11 @@ class PagesController < ApplicationController
       end
       @activities = Activity.where(:user_id => @following_users_ids).order("updated_at DESC")
 
+      @getting_started = false
+      if @activities.count == 0
+        @getting_started = true
+      end
+
       render "home"
 
     else
