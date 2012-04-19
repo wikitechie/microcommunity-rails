@@ -1,7 +1,3 @@
-%h1 Editing profile
-
-= render 'form'
-
-= link_to 'Show', @profile
-\|
-= link_to 'Back', profiles_path(@profile)
+= form_for @profile, :url => profile_path(@profile), :html => { :class => "edit_profile", :id => "edit_profile" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "form", :locals => {:f => f}

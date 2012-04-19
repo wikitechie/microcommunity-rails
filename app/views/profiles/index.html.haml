@@ -1,23 +1,21 @@
-%h1 Listing profiles
-
-%table
-  %tr
-    %th Name
-    %th Bio
-    %th User
-    %th
-    %th
-    %th
-
-  - @profiles.each do |profile|
+%h1 Profiles
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= profile.name
-      %td= profile.bio
-      %td= profile.user_id
-      %td= link_to 'Show', profile
-      %td= link_to 'Edit', edit_profile_path(profile)
-      %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete
+      %th ID
+      %th
+        = t("activerecord.attributes.profile.name", :default => t("activerecord.labels.name", :default => "Name"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @profiles.each do |profile|
+      %tr
+        %td= profile.id
+        %td= link_to profile.name, profile_path(profile)
+        %td= profile.created_at
+        %td
+          = link_to "Show", profile_path(profile)
+          = link_to "Edit", edit_profile_path(profile)
+          = link_to "Destroy", profile_path(profile), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-%br
-
-= link_to 'New Profile', new_profile_path
+= link_to "New", new_profile_path, :class => 'btn btn-primary'

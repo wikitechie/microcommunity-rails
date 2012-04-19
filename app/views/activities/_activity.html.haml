@@ -3,7 +3,8 @@
 		= link_to image_tag(avatar_url(activity.user), :width => "50"), activity.user.profile
 	%td
 		- if activity.action_object_type == "Group"
-			= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.name}"
+			= "#{activity.user.profile.name} #{activity.contextual_verb} titled "
+			= link_to "#{activity.action_object.name}", activity.action_object
 		- else
 			= "#{activity.user.profile.name} #{activity.contextual_verb} titled"
 			= link_to "#{activity.action_object.title}", activity.action_object

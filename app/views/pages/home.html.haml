@@ -7,22 +7,7 @@
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
 	.span9
-		-if @activites.nil?
-			.well.alert
-				%p Hey it seems you are new! You can do the following!
-				%ul
-					%li
-						%i.icon-zoom-out
-						Explore existing groups or create your own group!
-					%li
-						%i.icon-user
-						Explore people and follow who you like!
-					%li
-						%i.icon-book
-						Explore existing wiki pages, create your own!
-		-else
-			%ul
-				- @activities.each do |activity|
-					%p
-						= "#{activity.user.profile.name} #{activity.contextual_verb} titled #{activity.action_object.title}"
+		%table.table.table-condensed
+			- @activities.each do |activity|
+				= render activity
 

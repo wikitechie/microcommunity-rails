@@ -1,17 +1,17 @@
-= form_for @profile do |f|
-  -if @profile.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
-      %ul
-        - @profile.errors.full_messages.each do |msg|
-          %li= msg
+.clearfix
+  = f.label :name, t("activerecord.attributes.profile.name", :default => "Name"), :class => :label
+  .input
+    = f.text_field :name, :class => 'text_field'
+.clearfix
+  = f.label :bio, t("activerecord.attributes.profile.bio", :default => "Bio"), :class => :label
+  .input
+    = f.text_area :bio, :class => 'text_area'
+.clearfix
+  = f.label :user_id, t("activerecord.attributes.profile.user_id", :default => "User"), :class => :label
+  .input
+    = f.number_field :user_id, :class => 'number_field'
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :bio
-    = f.text_area :bio
-
-  .actions
-    = f.submit 'Save'
+.form-actions
+  %button{:class => "btn primary", :type => "submit"} Save
+  or
+  = link_to "Cancel", profiles_path

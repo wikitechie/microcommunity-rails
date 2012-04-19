@@ -39,16 +39,5 @@
 					- @content_stream.each do |activity|
 						= render activity
 
-.modal.hide.fade#wiki-modal
-	.modal-header
-		%a.close{"data-dismiss"=>"modal"}
-			×
-		%h3 New wikipage
-	.modal-body
-		- @wikipage = Wikipage.new
-		= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
-			= render :partial => "wikipages/form", :locals => {:f => f}
-	.modal-footer
-		%a.btn Close
-		%a.btn.btn-primary Save changes
+= render "wikipages/modal_form"
 

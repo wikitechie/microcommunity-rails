@@ -1,0 +1,25 @@
+.modal.hide.fade#wiki-modal
+	.modal-header
+		%a.close{"data-dismiss"=>"modal"}
+			×
+		%h3 New wikipage
+	.modal-body
+		- @wikipage = Wikipage.new
+		= form_for @wikipage, :url => wikipages_path, :html => { :class => :form } do |f|
+			.clearfix
+				= f.label :title, t("activerecord.attributes.wikipage.title", :default => "Title"), :class => :label
+				.input
+					= f.text_field :title, :class => 'text_field'
+			.clearfix
+				= f.label :body, :class => :label
+				.input
+					= f.text_area :body, :class => 'text_area',  :rows => "10", :cols => "80"
+				.input
+					= f.hidden_field :user_id, :class => 'number_field'
+				- unless @group.nil?
+					.input
+						= hidden_field_tag :group_id, @group.id,:class => 'number_field'
+			.modal-footer
+				%a.btn{"data-dismiss"=>"modal"} Cancel
+				%button{:class => "btn btn-primary", :type => "submit"} Save changes
+

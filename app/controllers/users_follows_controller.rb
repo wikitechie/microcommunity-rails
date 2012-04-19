@@ -6,14 +6,19 @@ class UsersFollowsController < ApplicationController
     if current_user == @follower
       if (@follower.following?(@followed))
         @follower.stop_following(@followed)
+        notice = "You have unfollowed #{@followed.profile.name}"
       else
         @follower.follow(@followed)
+        notice = "You are now following #{@followed.profile.name}"
       end
+
+      respond_to do |format|
+        format.html { redirect_to :back, notice: notice}
+      end
+
     end
 
-    respond_to do |format|
-      format.html { redirect_to :back, notice: 'You are now following #{@follower.profile.name}' }
-    end
+
 
   end
 
