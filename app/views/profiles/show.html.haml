@@ -1,16 +1,15 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1.page-header
   = @profile.name
-%p
-  = image_tag avatar_url(@profile.user)
+
+%ul.thumbnails
+  %li.span3
+    = image_tag avatar_url(@profile.user), :class => "thumbnail"
+
 %p
   %b Bio:
   = @profile.bio
-%p
-  %b User:
-  = @profile.user_id
 
 -if user_signed_in? && current_user.id == @profile.user_id
   = link_to 'Edit', edit_profile_path(@profile)
