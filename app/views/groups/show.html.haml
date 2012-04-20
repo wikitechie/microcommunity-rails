@@ -30,7 +30,7 @@
 		#content-stream
 			- if @group.users.include?(current_user)
 				%p
-					= link_to "Wikipage", new_wikipage_path,{:remote => true, 'data-toggle' => 'modal', 'data-target' => "#wiki-modal", 'data-backdrop' => true, 'data-keyboard' => true, :class => "btn"}
+					<a data-toggle="modal" href="#wiki-modal" class="btn btn-primary btn-large">New Wiki page</a>
 				%hr
 			- if @content_stream.nil?
 				%p You currently have no content. To post new content pick one above

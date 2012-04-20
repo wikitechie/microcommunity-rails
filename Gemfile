@@ -8,10 +8,6 @@ gem 'rails', '3.1.3'
 gem 'pg'
 gem "sqlite3", :group => [:development, :test ]
 
-gem 'less'
-gem 'less-rails'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,6 +16,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem "twitter-bootstrap-rails"
 end
+
+gem 'jquery-rails', '>= 1.0.12'
+gem 'less'
+gem 'less-rails'
+gem "haml", ">= 3.0.0"
+gem "haml-rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,9 +42,6 @@ gem "autotest", :group => [:test]
 gem 'database_cleaner', :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
 gem "factory_girl_rails", :group => [:development, :test]
-gem "haml", ">= 3.0.0"
-gem "haml-rails"
-gem 'jquery-rails', '>= 1.0.12'
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 
 
