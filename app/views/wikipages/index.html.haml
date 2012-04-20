@@ -13,8 +13,8 @@
         %td= wikipage.id
         %td= link_to wikipage.title, wikipage_path(wikipage)
         %td= wikipage.created_at
-        %td          
+        %td
           = link_to "Edit", edit_wikipage_path(wikipage)
-          = link_to "Destroy", wikipage_path(wikipage), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
 = link_to "New", new_wikipage_path, :class => 'btn btn-primary'
+

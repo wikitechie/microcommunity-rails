@@ -6,16 +6,10 @@
       %th
         = t("activerecord.attributes.profile.name", :default => t("activerecord.labels.name", :default => "Name"))
       %th Created at
-      %th Actions
   %tbody
     - @profiles.each do |profile|
       %tr
         %td= profile.id
         %td= link_to profile.name, profile_path(profile)
         %td= profile.created_at
-        %td
-          = link_to "Show", profile_path(profile)
-          = link_to "Edit", edit_profile_path(profile)
-          = link_to "Destroy", profile_path(profile), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-= link_to "New", new_profile_path, :class => 'btn btn-primary'

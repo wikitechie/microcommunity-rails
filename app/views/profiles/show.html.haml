@@ -1,5 +1,5 @@
-- params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
 - unless current_user.nil?
+  - params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
   - if current_user.following?(@profile.user)
     = button_to "Unfollow", params, :method => :post, :class => "btn"
   - else
