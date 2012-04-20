@@ -9,9 +9,10 @@
 .clearfix
   = f.label :user_id, t("activerecord.attributes.profile.user_id", :default => "User"), :class => :label
   .input
-    = f.number_field :user_id, :class => 'number_field'
+    = f.hidden_field :user_id, :class => 'number_field'
 
 .form-actions
   %button{:class => "btn primary", :type => "submit"} Save
   or
   = link_to "Cancel", profiles_path
+
