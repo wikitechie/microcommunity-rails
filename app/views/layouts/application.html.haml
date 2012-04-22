@@ -49,24 +49,14 @@
 
       .content
         .row
-          .span9
+          .span12
             - unless notice.nil?
-              .row
-                .span9
-                  .alert.alert-info
-                    <a class="close" data-dismiss="alert">×</a>
-                    = notice
-            .row
-              .span9
-                = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+              .alert.alert-info
+                <a class="close" data-dismiss="alert">×</a>
+                = notice
+        .row
+          .span12
+            = yield
 
       %footer
         %hr

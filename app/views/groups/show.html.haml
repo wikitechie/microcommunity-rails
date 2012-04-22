@@ -1,5 +1,5 @@
 .row.page-header
-	.span6
+	.span9
 		%h1
 			= @group.name
 		%p
@@ -10,23 +10,26 @@
 				- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => @group.id, :user_id => current_user.id} }
 				= button_to "Join", params, :class => "btn btn-primary btn-large pull-right", :id => "join-group"
 .row
-	.span4
+	.span3
 		- if @group.users.include?(current_user)
 			#group-publisher
 				= form_for @post, :remote => true do |f|
 					%p
-						= f.text_area :text,  :class => "span4", :rows => 2
+						= f.text_area :text,  :class => "span3", :rows => 2
 						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
 						= f.hidden_field :owner_type, :value => @group.class.to_s
 						= f.hidden_field :owner_id, :value => @group.id
-					%p= f.submit("Post", :class => "btn pull-right span4")
+					%p= f.submit("Post", :class => "btn pull-right span3")
 
 		#social-stream
 			- unless @group.posts.empty?
 				%table.table.table-condensed#social-stream-table
 					= render @group.posts.order("created_at DESC") + @group_activity
+	.span6
+		#content-canavas
+		Hey
 
-	.span5
+	.span3
 		#content-stream
 			- if @group.users.include?(current_user)
 				%p
@@ -38,6 +41,8 @@
 				%table.table.table-condensed
 					- @content_stream.each do |activity|
 						= render activity
+
+
 
 = render "wikipages/modal_form"
 
