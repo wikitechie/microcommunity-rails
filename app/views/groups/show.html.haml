@@ -13,17 +13,17 @@
 	.span4
 		- if @group.users.include?(current_user)
 			#group-publisher
-				= form_for @post do |f|
+				= form_for @post, :remote => true do |f|
 					%p
 						= f.text_area :text,  :class => "span4", :rows => 2
 						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
 						= f.hidden_field :owner_type, :value => @group.class.to_s
 						= f.hidden_field :owner_id, :value => @group.id
-					%p= f.submit("Post", :class => "btn")
+					%p= f.submit("Post", :class => "btn pull-right span4")
 
 		#social-stream
 			- unless @group.posts.empty?
-				%table.table.table-condensed
+				%table.table.table-condensed#social-stream-table
 					= render @group.posts.order("created_at DESC") + @group_activity
 
 	.span5
