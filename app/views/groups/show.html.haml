@@ -27,7 +27,7 @@
 					= render @group.posts.order("created_at DESC") + @group_activity
 	.span6
 		#content-canavas
-		Hey
+			= render @content_stream.first.action_object
 
 	.span3
 		#content-stream
