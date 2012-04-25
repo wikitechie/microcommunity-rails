@@ -1,0 +1,4 @@
+= form_for @wikipage, :remote => true, :url => wikipage_path(@wikipage), :html => { :class => "edit_wikipage", :id => "edit_wikipage" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "remote_form", :locals => {:f => f}
+

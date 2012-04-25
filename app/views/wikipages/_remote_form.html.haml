@@ -1,0 +1,22 @@
+- if @wikipage.errors.any?
+	#error_explanation{:class => "alert alert-error row"}
+		%p
+			= pluralize(@wikipage.errors.count, "error")
+			prohibited this wikipage from being saved:
+		%ul
+			- @wikipage.errors.full_messages.each do |msg|
+				%li
+					= msg
+
+.clearfix
+	.input
+		= f.text_area :body, :class => 'text_area span5',  :rows => "10", :cols => "80"
+	.input
+		= f.hidden_field :user_id, :class => 'number_field'
+	- unless @group.nil?
+		.input
+			= hidden_field_tag :group_id, @group.id,:class => 'number_field'
+
+.form-actions
+	%button{:class => "btn btn-primary", :type => "submit"} Save
+

@@ -36,6 +36,10 @@ class WikipagesController < ApplicationController
   # GET /wikipages/1/edit
   def edit
     @wikipage = Wikipage.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
 
   # POST /wikipages
@@ -67,9 +71,11 @@ class WikipagesController < ApplicationController
   def update
     @wikipage = Wikipage.find(params[:id])
 
+
     respond_to do |format|
       if @wikipage.update_attributes(params[:wikipage])
         format.html { redirect_to @wikipage, notice: 'Wikipage was successfully updated.' }
+        format.js {@update_activity = Activity.last}
         format.json { head :ok }
       else
         format.html { render action: "edit" }

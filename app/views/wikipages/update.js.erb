@@ -1,0 +1,4 @@
+$("#content-canavas").html("<%= escape_javascript(render @wikipage) %>");
+
+$("#content-stream-table").prepend("<%= escape_javascript(render(:partial => "activities/activity", :object => @update_activity)) %>");
+

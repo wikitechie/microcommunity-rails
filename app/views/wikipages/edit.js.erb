@@ -1,0 +1,5 @@
+$("#wikipage-edit-button").hide();
+$("#wikipage").prepend("<%= escape_javascript(button_to("Cancel", {:controller => 'wikipages', :action => 'show', :id => @wikipage.id }, :method => "get", :remote => true, :class => "pull-right btn btn-danger")) %>");
+
+$("#wikipage-body").html("<%= escape_javascript(render :template => "wikipages/remote_edit.html") %>");
+

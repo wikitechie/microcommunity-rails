@@ -9,8 +9,9 @@
 			- unless @group.users.include?(current_user)
 				- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => @group.id, :user_id => current_user.id} }
 				= button_to "Join", params, :class => "btn btn-primary btn-large pull-right", :id => "join-group"
+
 .row
-	.span3
+	.span3#social-stream
 		- if @group.users.include?(current_user)
 			#group-publisher
 				= form_for @post, :remote => true do |f|
@@ -19,28 +20,28 @@
 						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
 						= f.hidden_field :owner_type, :value => @group.class.to_s
 						= f.hidden_field :owner_id, :value => @group.id
-					%p= f.submit("Post", :class => "btn pull-right span3")
+						.row
+							.span3.post-button
+								= f.submit("Post", :class => "btn pull-right")
 
-		#social-stream
-			- unless @group.posts.empty?
-				%table.table.table-condensed#social-stream-table
-					= render @group.posts.order("created_at DESC") + @group_activity
-	.span6
-		#content-canavas
-			= render @content_stream.first.action_object
+		- unless @group.posts.empty?
+			%table.table.table-condensed#social-stream-table
+				= render @group.posts.order("created_at DESC") + @group_activity
 
-	.span3
-		#content-stream
-			- if @group.users.include?(current_user)
-				%p
-					<a data-toggle="modal" href="#wiki-modal" class="btn btn-primary btn-large">New Wiki page</a>
-				%hr
-			- if @content_stream.nil?
-				%p You currently have no content. To post new content pick one above
-			- else
-				%table.table.table-condensed
-					- @content_stream.each do |activity|
-						= render activity
+	.span6#content-canavas
+		= render @content_stream.first.action_object
+
+	.span3#content-stream
+		- if @group.users.include?(current_user)
+			%p
+				<a data-toggle="modal" href="#wiki-modal" class="btn btn-primary btn-large">New Wiki page</a>
+			%hr
+		- if @content_stream.nil?
+			%p You currently have no content. To post new content pick one above
+		- else
+			%table.table.table-condensed#content-stream-table
+				- @content_stream.each do |activity|
+					= render activity
 
 
 
