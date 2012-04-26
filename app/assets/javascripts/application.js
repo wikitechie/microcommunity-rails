@@ -11,9 +11,6 @@
 
 
 $(document).ready(function(){
-	$("#content-canavas-view").click(function(){
-		this.hide();
-	}};
 
 	$('.dropdown-toggle').dropdown();
 

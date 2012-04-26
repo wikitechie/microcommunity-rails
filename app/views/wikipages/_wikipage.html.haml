@@ -1,7 +1,10 @@
 #wikipage.well
-	= button_to "Edit", edit_wikipage_path(@wikipage), :method => "get", :class => 'btn btn-success pull-right', :remote => true, :id => "wikipage-edit-button"
+	- if user_signed_in?
+		= button_to "Edit", edit_wikipage_path(@wikipage), :method => "get", :class => 'btn btn-success pull-right', :remote => true, :id => "wikipage-edit-button"
+	- else
+		%button.btn.btn-success.pull-right.disabled Sign in to edit
 	.page-header
 		%h1= wikipage.title
 	#wikipage-body
-		%p= wikipage.body
+		%p= simple_format wikipage.body
 
