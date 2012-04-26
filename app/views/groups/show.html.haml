@@ -28,22 +28,28 @@
 			%table.table.table-condensed#social-stream-table
 				= render @group.posts.order("created_at DESC") + @group_activity
 
-	.span6#content-canavas
+	.span5#content-canavas
 		= render @content_stream.first.action_object
 
-	.span3#content-stream
+	.span4#content-stream
 		- if @group.users.include?(current_user)
-			%p
-				<a data-toggle="modal" href="#wiki-modal" class="btn btn-primary btn-large">New Wiki page</a>
-			%hr
+			%ul.nav.pull-right
+				%button.btn.btn-primary{"data-toggle"=>"modal", :href => "#wiki-modal"}
+					%i.icon-file
+					Wikipage
+				%button.btn.btn-primary.disabled
+					%i.icon-question-sign
+					Question
+				%button.btn.btn-primary.disabled
+					%i.icon-star
+					Bookmark
+
 		- if @content_stream.nil?
 			%p You currently have no content. To post new content pick one above
 		- else
 			%table.table.table-condensed#content-stream-table
 				- @content_stream.each do |activity|
 					= render activity
-
-
 
 = render "wikipages/modal_form"
 
