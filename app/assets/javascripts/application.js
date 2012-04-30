@@ -8,6 +8,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.spin
+
+$('.remote-wikipage-link').bind('ajax:beforeSend', function() {
+	$('#content-canavas').spin();
+});
+
+$('.remote-wikipage-link').bind('ajax:sucess', function() {
+	$('#content-canavas').show();
+});
 
 
 $(document).ready(function(){
