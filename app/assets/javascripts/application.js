@@ -32,3 +32,7 @@ $(function()
 	$('#content-stream-table').jScrollPane();
 });
 
+$("#group-publisher-text").click(function(){
+	$("#group-publisher-text").attr("rows","3");
+});
+

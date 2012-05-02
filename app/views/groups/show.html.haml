@@ -11,18 +11,18 @@
 				= button_to "Join", params, :class => "btn btn-primary btn-large pull-right", :id => "join-group"
 
 .row
-	.span3#social-stream
+	.span4#social-stream
 		- if @group.users.include?(current_user)
 			#group-publisher
 				= form_for @post, :remote => true do |f|
 					%p
-						= f.text_area :text,  :class => "span3", :rows => 2
+						= f.text_area :text,  :class => "span4", :rows => 1, :id => "group-publisher-text", :placeholder => "Write something..."
 						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
 						= f.hidden_field :owner_type, :value => @group.class.to_s
 						= f.hidden_field :owner_id, :value => @group.id
 						.row
-							.span3.post-button
-								= f.submit("Post", :class => "btn pull-right")
+							.span4.post-button
+								= f.submit("Post", :class => "btn btn-success pull-right")
 
 		- unless @group.posts.empty?
 			%table.table.table-condensed#social-stream-table
@@ -31,7 +31,7 @@
 	.span5#content-canavas
 		= render @content_stream.first.action_object
 
-	.span4#content-stream
+	.span3#content-stream
 		- unless current_user.nil?
 			- if @group.users.include?(current_user)
 				%ul.nav.pull-right
@@ -41,9 +41,6 @@
 					%button.btn.btn-primary.disabled
 						%i.icon-question-sign
 						Question
-					%button.btn.btn-primary.disabled
-						%i.icon-star
-						Bookmark
 
 		- if @content_stream.nil?
 			%p You currently have no content. To post new content pick one above
