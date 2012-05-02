@@ -21,9 +21,19 @@ $('.remote-wikipage-link').bind('ajax:complete', function() {
 });
 
 
-$('.new_post').bind('ajax:beforeSend', function() {
+$('.new_post').bind('ajax:complete', function() {
 	$('#post:first').hide();
 	$('#post:first').fadeIn();
+	$("#group-publisher-text").removeAttr("disabled");
+	$("#group-publisher-text").val('');
+	$("#post-button").removeAttr("disabled");
+	$("#group-publisher").spin(false);
+});
+
+$('.new_post').bind('ajax:beforeSend', function() {
+	$("#group-publisher-text").attr("disabled","disabled");
+	$("#post-button").attr("disabled","disabled");
+	$("#group-publisher").spin();
 });
 
 $(function()

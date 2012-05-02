@@ -22,7 +22,7 @@
 						= f.hidden_field :owner_id, :value => @group.id
 						.row
 							.span4.post-button
-								= f.submit("Post", :class => "btn btn-success pull-right")
+								= f.submit("Post", :class => "btn btn-success pull-right", :id => "post-button")
 
 		- unless @group.posts.empty?
 			%table.table.table-condensed#social-stream-table
