@@ -9,8 +9,20 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.spin
+//= require jquery.ui.all
 
 $('.remote-wikipage-link').bind('ajax:beforeSend', function() {
+	$('#content-canavas').fadeOut();
 	$('#content-canavas').spin();
+});
+
+$('.remote-wikipage-link').bind('ajax:complete', function() {
+	$('#content-canavas').fadeIn();
+});
+
+
+$('.new_post').bind('ajax:beforeSend', function() {
+	$('#post:first').hide();
+	$('#post:first').fadeIn();
 });
 
