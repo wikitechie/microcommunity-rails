@@ -9,7 +9,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.spin
-//= require jquery.ui.all
+//= require_tree .
 
 $('.remote-wikipage-link').bind('ajax:beforeSend', function() {
 	$('#content-canavas').fadeOut();
@@ -24,5 +24,11 @@ $('.remote-wikipage-link').bind('ajax:complete', function() {
 $('.new_post').bind('ajax:beforeSend', function() {
 	$('#post:first').hide();
 	$('#post:first').fadeIn();
+});
+
+$(function()
+{
+	$('#social-stream-table').jScrollPane();
+	$('#content-stream-table').jScrollPane();
 });
 
