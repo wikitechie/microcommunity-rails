@@ -12,11 +12,11 @@
 //= require_tree .
 
 $('.remote-wikipage-link').bind('ajax:beforeSend', function() {
-	$('#content-canavas').fadeOut();
 	$('#content-canavas').spin();
 });
 
 $('.remote-wikipage-link').bind('ajax:complete', function() {
+	$('#content-canavas').hide();
 	$('#content-canavas').fadeIn();
 	$('#content-canavas').spin(false);
 });
