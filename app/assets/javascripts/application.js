@@ -30,7 +30,14 @@ $(function()
 {
 	$('#social-stream-table').jScrollPane();
 	$('#content-stream-table').jScrollPane();
+
+	$(".jspVerticalBar").hide();
+
 });
+
+$("#social-stream-table").hover(function(){$("#social-stream-table .jspVerticalBar").show();}, function(){$("#social-stream-table .jspVerticalBar").hide();});
+
+$("#content-stream-table").hover(function(){$("#content-stream-table .jspVerticalBar").show();}, function(){$("#content-stream-table .jspVerticalBar").hide();});
 
 $("#group-publisher-text").click(function(){
 	$("#group-publisher-text").attr("rows","3");
