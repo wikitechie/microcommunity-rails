@@ -18,6 +18,7 @@ $('.remote-wikipage-link').bind('ajax:beforeSend', function() {
 
 $('.remote-wikipage-link').bind('ajax:complete', function() {
 	$('#content-canavas').fadeIn();
+	$('#content-canavas').spin(false);
 });
 
 
@@ -35,6 +36,7 @@ $('.new_post').bind('ajax:beforeSend', function() {
 	$("#post-button").attr("disabled","disabled");
 	$("#group-publisher").spin();
 });
+
 
 $(function()
 {

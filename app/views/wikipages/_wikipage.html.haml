@@ -1,6 +1,6 @@
 #wikipage.well
 	- if user_signed_in?
-		= button_to "Edit", edit_wikipage_path(wikipage), :method => "get", :class => 'btn btn-success pull-right', :remote => true, :id => "wikipage-edit-button"
+		= button_to "Edit", edit_wikipage_path(wikipage), :method => "get", :form_class => "remote-wikipage-link", :class => 'btn btn-success pull-right', :remote => true, :id => "wikipage-edit-button"
 	- else
 		%button.btn.btn-success.pull-right.disabled Sign in to edit
 	.page-header
