@@ -29,7 +29,11 @@
 				= render @group.posts.order("created_at DESC") + @group_activity
 
 	.span5#content-canavas
-		= render @content_stream.first.action_object
+		- unless @content_stream.first.nil?
+			= render @content_stream.first.action_object
+		- else
+			.well
+				You currently have no content! You can simply create one by hitting the button on the right!
 
 	.span3#content-stream
 		- unless current_user.nil?
