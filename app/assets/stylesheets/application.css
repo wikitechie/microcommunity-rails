@@ -16,13 +16,15 @@
 
 #social-stream-table {
 	height:300px;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	display: block;
 }
 
 #content-stream-table {
 	height:375px;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	display: block;
 }
 
