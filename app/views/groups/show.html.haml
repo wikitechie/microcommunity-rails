@@ -51,7 +51,7 @@
 		- else
 			%table.table.table-condensed#content-stream-table
 				- @content_stream.each do |activity|
-					= render activity
+					= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 
 = render "wikipages/modal_form"
 

@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    @activities = Activity.where(:user_id => params[:id]).order("updated_at DESC")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -84,3 +85,4 @@ class ProfilesController < ApplicationController
     end
   end
 end
+

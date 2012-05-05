@@ -7,5 +7,5 @@
 			= link_to "#{activity.action_object.name}", activity.action_object
 		- else
 			= "#{activity.user.profile.name} #{activity.contextual_verb} titled"
-			= link_to "#{activity.action_object.title}", activity.action_object, :remote => true, :class => "remote-wikipage-link"
+			= link_to "#{activity.action_object.title}", activity.action_object, :remote => is_remote, :class => "remote-wikipage-link"
 

@@ -1,15 +1,22 @@
 .row.page-header
-	.span5
+	.span8
 		%h1 News Feed
 	.span4
 		.pull-right
 			= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
-	.span9
+	.span4
 		%table.table.table-condensed
 			- @activities.each do |activity|
 				= render activity
 		- if @getting_started
 			= render "shared/getting_started"
+
+	.span5#content-canavas
+		- unless @activities.first.nil?
+			= render @activities.first.action_object
+		- else
+			.well
+				You currently have no content! You can simply create one by hitting the button on the right!
 

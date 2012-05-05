@@ -28,3 +28,10 @@
 	display: block;
 }
 
+.stream-table {
+	height:400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: block;
+}
+

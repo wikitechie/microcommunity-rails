@@ -1,24 +1,31 @@
-- unless current_user.nil?
-  - params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
-  - if current_user.following?(@profile.user)
-    = button_to "Unfollow", params, :method => :post, :class => "btn"
-  - else
-    = button_to "Follow", params, :method => :post, :class => "btn"
+.row.page-header
+	.span8
+		%h1
+			= @profile.name
+	.span4
+		.pull-right
+			- unless current_user.nil?
+				- params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
+			- if current_user.following?(@profile.user)
+				= link_to "Unfollow", params, :method => :post, :class => "btn btn-large"
+			- else
+				= link_to "Follow", params, :method => :post, :class => "btn btn-large"
+			- if user_signed_in? && current_user.id == @profile.user_id
+				= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-large"
 
-%h1.page-header
-  = @profile.name
+.row
+	.span2
+		%ul.thumbnails
+			%li.span3
+				= image_tag avatar_url(@profile.user), :class => "thumbnail"
+		%p
+			%b Bio:
+			= @profile.bio
 
-%ul.thumbnails
-  %li.span3
-    = image_tag avatar_url(@profile.user), :class => "thumbnail"
-
-%p
-  %b Bio:
-  = @profile.bio
-
--if user_signed_in? && current_user.id == @profile.user_id
-  = link_to 'Edit', edit_profile_path(@profile)
-  \|
-
-= link_to 'Back', profiles_path
+	.span5
+		%table.table.table-condensed.stream-table
+			- @activities.each do |activity|
+				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => false }
+		- if @getting_started
+			= render "shared/getting_started"
 
