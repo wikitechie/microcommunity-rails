@@ -40,7 +40,7 @@
 				%table.table.table-condensed#social-stream-table
 					= render @posts_news_feed
 
-		.span5#content-canavas
+		.span5#content-canavas.stream-table
 			- unless @activities.first.nil?
 				= render @activities.first.action_object
 			- else

@@ -46,8 +46,8 @@ gem "capybara", :group => [:development, :test]
 gem "factory_girl_rails", :group => [:development, :test]
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 
-
 #social gems
 gem "acts_as_follower"
 gem "devise"
+gem 'acts_as_commentable_with_threading'
 

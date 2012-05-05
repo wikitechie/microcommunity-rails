@@ -1,0 +1,7 @@
+%tr#post
+	%td{:width => 50}
+		= link_to image_tag(avatar_url(comment.user), :width => "50"), comment.user.profile
+	%td
+		%p= "#{comment.user.profile.name} posted"
+		%p=  comment.body
+

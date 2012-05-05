@@ -1,2 +1,3 @@
-$('#social-stream-table').prepend("<%= escape_javascript(render(:partial => "post", :object => @post)) %>")
+$('#social-stream-table').prepend("<%= escape_javascript(render(:partial => "post", :object => @post)) %>");
+$('#content-canavas').html("<%= escape_javascript(render(:partial => "embeded_post", :object => @post)) %>")
 

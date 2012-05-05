@@ -37,6 +37,12 @@ $('.new_post').bind('ajax:beforeSend', function() {
 	$("#group-publisher").spin();
 });
 
+$('.new_comment').bind('ajax:beforeSend', function() {
+	$("#comment-body").attr("disabled","disabled");
+	$("#comment-button").attr("disabled","disabled");
+	$("#comment-body").spin();
+});
+
 
 $(function()
 {

@@ -1,5 +1,7 @@
 Microcommunity::Application.routes.draw do
 
+  resources :comments
+
   post "group_follows/create"
   post "users_follows/create"
   post "memberships/create"
