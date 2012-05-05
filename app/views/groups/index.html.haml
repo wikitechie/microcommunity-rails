@@ -1,26 +1,26 @@
 .row
-	.span9
+	.span12
 		.page-header
 			.row
-				.span6
+				.span8
 					%h1 Groups
-				.span3
+				.span4
 					= link_to "Create a group",new_group_path ,:class => "btn btn-large pull-right"
 
 
-
-.offset1
-	.row
-		- @groups.each do |group|
-			.span3.well
+.row
+	- @groups.each do |group|
+		.span4
+			.well
 				%h2= link_to group.name, group_path(group)
 				%p= group.description
-				%table.pull-right
-					%tr
-						- unless current_user.nil?
-							- unless group.users.include?(current_user)
-								%td
-									- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => group.id, :user_id => current_user.id} }
-									= button_to "Join", params, :class => "btn btn-primary", :id => "join-group"
-						%td= button_to "View", group_path(group), :class => 'btn', :method => :get
+				%p
+					%table.pull-right
+						%tr
+							- unless current_user.nil?
+								- unless group.users.include?(current_user)
+									%td
+										- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => group.id, :user_id => current_user.id} }
+										= button_to "Join", params, :class => "btn btn-primary", :id => "join-group"
+							%td= button_to "View", group_path(group), :class => 'btn', :method => :get
 

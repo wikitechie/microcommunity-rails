@@ -7,9 +7,9 @@
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
 	.span4
-		%table.table.table-condensed
+		%table.table.table-condensed.stream-table
 			- @activities.each do |activity|
-				= render activity
+				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 		- if @getting_started
 			= render "shared/getting_started"
 
