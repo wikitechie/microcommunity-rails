@@ -6,7 +6,7 @@
 			= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
-	- if false
+	- if @getting_started
 		.span12
 			= render "shared/getting_started"
 		.span4
