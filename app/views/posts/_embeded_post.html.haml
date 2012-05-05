@@ -1,0 +1,9 @@
+.well
+	%table
+		%tr#post
+			%td{:style => "padding:5px;vertical-align:text-top;"}
+				= link_to image_tag(avatar_url(post.user), :width => "50"), post.user.profile
+			%td
+				%p= "#{post.user.profile.name} posted"
+				= post.text
+

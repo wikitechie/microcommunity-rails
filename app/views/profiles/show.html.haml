@@ -1,31 +1,56 @@
-.row.page-header
-	.span8
+.row
+	.span1
+		%ul.thumbnails
+			%li.span3
+				= image_tag avatar_url(@profile.user), :class => "thumbnail"
+	.span7
 		%h1
 			= @profile.name
+		%p
+			%b Bio:
+			= @profile.bio
+
 	.span4
 		.pull-right
 			- unless current_user.nil?
 				- params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
 			- if current_user.following?(@profile.user)
-				= link_to "Unfollow", params, :method => :post, :class => "btn btn-large"
+				= link_to "Unfollow", params, :method => :post, :class => "btn btn-large btn-warning"
 			- else
-				= link_to "Follow", params, :method => :post, :class => "btn btn-large"
+				= link_to "Follow", params, :method => :post, :class => "btn btn-large btn-primary"
 			- if user_signed_in? && current_user.id == @profile.user_id
 				= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-large"
 
-.row
-	.span2
-		%ul.thumbnails
-			%li.span3
-				= image_tag avatar_url(@profile.user), :class => "thumbnail"
-		%p
-			%b Bio:
-			= @profile.bio
 
-	.span5
+.row
+	.span4
+		#group-publisher
+			= form_for Post.new, :remote => true do |f|
+				%p
+					= f.text_area :text,  :class => "span4", :rows => 1, :id => "group-publisher-text", :placeholder => "Write something..."
+					= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
+					= f.hidden_field :owner_type, :value => current_user.class.to_s
+					= f.hidden_field :owner_id, :value => @profile.user.id
+					.row
+						.span4.post-button
+							= f.submit("Post", :class => "btn btn-success pull-right", :id => "post-button")
+		- unless @wall.empty?
+			%table.table.table-condensed#social-stream-table
+				= render @wall
+
+	.span5#content-canavas
+		- unless @activities.first.nil?
+			= render @activities.first.action_object
+		- else
+			.well
+				You currently have no content! You can simply create one by hitting the button on the right!
+
+	.span3
+		%h1.page-header Recent Activity
+
 		%table.table.table-condensed.stream-table
 			- @activities.each do |activity|
-				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => false }
+				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 		- if @getting_started
 			= render "shared/getting_started"
 

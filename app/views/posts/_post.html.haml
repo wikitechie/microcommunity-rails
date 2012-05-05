@@ -2,5 +2,6 @@
 	%td
 		= link_to image_tag(avatar_url(post.user), :width => "50"), post.user.profile
 	%td
-		%p= "#{post.user.profile.name} posted \"#{post.text}\""
+		%p= "#{post.user.profile.name} posted"
+		= link_to post.text, post, :remote => true, :class => "remote-wikipage-link"
 

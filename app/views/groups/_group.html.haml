@@ -1,0 +1,13 @@
+.well
+	%h2= link_to group.name, group_path(group)
+	%p= group.description
+	%p
+		%table.pull-right
+			%tr
+				- unless current_user.nil?
+					- unless group.users.include?(current_user)
+						%td
+							- params = {:controller => 'memberships', :action => 'create', :membership => {:group_id => group.id, :user_id => current_user.id} }
+							= button_to "Join", params, :class => "btn btn-primary", :id => "join-group"
+				%td= button_to "View", group_path(group), :class => 'btn', :method => :get
+

@@ -15,6 +15,12 @@ class PagesController < ApplicationController
         @getting_started = true
       end
 
+      @wikipages = Wikipage.limit(3)
+      @people = Profile.limit(3)
+      @groups = Group.limit(3)
+
+      @posts_news_feed = Post.where(:owner_type => "User", :owner_id => @following_users_ids.push(params[:id])).order("created_at DESC")
+
       render "home"
 
     else

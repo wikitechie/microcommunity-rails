@@ -6,9 +6,11 @@ class UsersFollowsController < ApplicationController
     if current_user == @follower
       if (@follower.following?(@followed))
         @follower.stop_following(@followed)
+        @following_action = false
         notice = "You have unfollowed #{@followed.profile.name}"
       else
         @follower.follow(@followed)
+        @following_action = true
         notice = "You are now following #{@followed.profile.name}"
       end
 
@@ -17,10 +19,6 @@ class UsersFollowsController < ApplicationController
       end
 
     end
-
-
-
   end
-
 end
 

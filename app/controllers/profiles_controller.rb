@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @activities = Activity.where(:user_id => params[:id]).order("updated_at DESC")
+    @wall = Post.where(:owner_type => "User", :owner_id => params[:id]).order("created_at DESC")
 
     respond_to do |format|
       format.html # show.html.erb

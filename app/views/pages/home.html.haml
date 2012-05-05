@@ -6,17 +6,49 @@
 			= link_to "Create a wiki page",new_wikipage_path ,:class => "btn btn-large"
 			= link_to "Create a group",new_group_path ,:class => "btn btn-large"
 .row
-	.span4
-		%table.table.table-condensed.stream-table
-			- @activities.each do |activity|
-				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
-		- if @getting_started
+	- if false
+		.span12
 			= render "shared/getting_started"
+		.span4
+			%h2.page-header Groups to join!
+			- @groups.each do |group|
+				= render group
+		.span5
+			%h2.page-header Wikipages to edit and follow!
+			- @wikipages.each do |wikipage|
+				#content-canavas
+					= render wikipage
+		.span3
+			%h2.page-header People to follow!
+			- @people.each do |profile|
+				= render profile
 
-	.span5#content-canavas
-		- unless @activities.first.nil?
-			= render @activities.first.action_object
-		- else
-			.well
-				You currently have no content! You can simply create one by hitting the button on the right!
+
+	- else
+		.span4
+			#group-publisher
+				= form_for Post.new, :remote => true do |f|
+					%p
+						= f.text_area :text,  :class => "span4", :rows => 1, :id => "group-publisher-text", :placeholder => "Write something..."
+						= f.hidden_field :user_id, :class => 'number_field', :value => current_user.id
+						= f.hidden_field :owner_type, :value => current_user.class.to_s
+						= f.hidden_field :owner_id, :value => current_user.id
+						.row
+							.span4.post-button
+								= f.submit("Post", :class => "btn btn-success pull-right", :id => "post-button")
+			- unless @posts_news_feed.empty?
+				%table.table.table-condensed#social-stream-table
+					= render @posts_news_feed
+
+		.span5#content-canavas
+			- unless @activities.first.nil?
+				= render @activities.first.action_object
+			- else
+				.well
+					You currently have no content! You can simply create one by hitting the button on the right!
+
+		.span3
+			%table.table.table-condensed.stream-table
+				- @activities.each do |activity|
+					= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 
