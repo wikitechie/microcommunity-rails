@@ -14,6 +14,10 @@ class WikipagesController < ApplicationController
   # GET /wikipages/1.json
   def show
     @wikipage = Wikipage.find(params[:id])
+    @history =  Activity.where(
+      :action_object_id => @wikipage.id,
+      :action_object_type => "Wikipage"
+    ).order("updated_at DESC")
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,30 +1,36 @@
-.row.page-header
-	.span6
-		%h1= @wikipage.title
-
-	.span3
-		%ul.nav.nav-pills.pull-right
-			%li.dropdown
-				:plain
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						Add/Remove
-						<b class="caret"></b>
-					</a>
-				- unless current_user.nil?
-					#add-to-group
-						%ul.dropdown-menu
-							- current_user.groups.each do |group|
-								%li
-									- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
-									= link_to( params, {:method => :post},:id => "group-#{group.id}") do
-										-if group.following?(@wikipage)
-											%i.icon-ok
-										= group.name
-
-			%li= link_to "Back", :back, :class => 'btn'
-			%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
-
 .row
 	.span9
-		%p= @wikipage.body
+		.row.page-header
+			.span6
+				%h1= @wikipage.title
+
+			.span3
+				%ul.nav.nav-pills.pull-right
+					%li.dropdown
+						:plain
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								Add/Remove
+								<b class="caret"></b>
+							</a>
+						- unless current_user.nil?
+							#add-to-group
+								%ul.dropdown-menu
+									- current_user.groups.each do |group|
+										%li
+											- params = {:controller => 'group_follows', :action => 'create', :group_id => group.id, :user_id => current_user.id, :content_type => @wikipage.class.to_s, :content_id => @wikipage.id }
+											= link_to( params, {:method => :post},:id => "group-#{group.id}") do
+												-if group.following?(@wikipage)
+													%i.icon-ok
+												= group.name
+
+					%li= link_to "Back", :back, :class => 'btn'
+					%li= link_to "Edit", edit_wikipage_path(@wikipage), :class => 'btn'
+		.row
+			.span9
+				%p= @wikipage.body
+
+	.span3#content-stream
+		%table.table.table-condensed#content-stream-table
+			- @history.each do |activity|
+				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 

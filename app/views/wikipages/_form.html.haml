@@ -15,7 +15,7 @@
 .clearfix
 	= f.label :body, t("activerecord.attributes.wikipage.body", :default => "Body"), :class => :label
 	.input
-		= f.text_area :body, :class => 'text_area',  :rows => "15", :cols => "80"
+		= f.text_area :body, :class => 'text_area', :class => "span12", :rows => "15"
 	.input
 		= f.hidden_field :user_id, :class => 'number_field'
 	- unless @group.nil?
