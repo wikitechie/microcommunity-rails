@@ -14,7 +14,7 @@
 		.pull-right
 			- unless current_user.nil?
 				- params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
-			- unless current_user = @profile.user
+			- unless current_user == @profile.user
 				- if current_user.following?(@profile.user)
 					= link_to "Unfollow", params, :method => :post, :class => "btn btn-large btn-warning"
 				- else
