@@ -13,12 +13,13 @@
 		- embeded_post.root_comments.each do |comment|
 			= render comment
 
-	.well
-		= form_for Comment.build_from( embeded_post, current_user.id, "" ), :remote => true do |f|
-			.field
-				= f.label :body, "Reply"
-				= f.text_area :body, :class => "span4", :rows => 2
-				= f.hidden_field :post_id, :value => embeded_post.id
-			.actions
-				= f.submit 'Comment', :class => "btn", :id => "comment-button"
+	- unless current_user.nil?
+		.well
+			= form_for Comment.build_from( embeded_post, current_user.id, "" ), :remote => true do |f|
+				.field
+					= f.label :body, "Reply"
+					= f.text_area :body, :class => "span4", :rows => 2
+					= f.hidden_field :post_id, :value => embeded_post.id
+				.actions
+					= f.submit 'Comment', :class => "btn", :id => "comment-button"
 

@@ -34,6 +34,7 @@
 		- else
 			.well
 				You currently have no content! You can simply create one by hitting the button on the right!
+			= render :partial => "posts/embeded_post", :object => @group.posts.order("created_at DESC").first
 
 	.span3#content-stream
 		- unless current_user.nil?

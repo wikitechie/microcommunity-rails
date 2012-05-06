@@ -14,16 +14,17 @@
 		.pull-right
 			- unless current_user.nil?
 				- params = {:controller => 'users_follows', :action => 'create', :follower_user_id => current_user.id, :followed_user_id => @profile.user.id, }
-			- if current_user.following?(@profile.user)
-				= link_to "Unfollow", params, :method => :post, :class => "btn btn-large btn-warning"
-			- else
-				= link_to "Follow", params, :method => :post, :class => "btn btn-large btn-primary"
+			- unless current_user = @profile.user
+				- if current_user.following?(@profile.user)
+					= link_to "Unfollow", params, :method => :post, :class => "btn btn-large btn-warning"
+				- else
+					= link_to "Follow", params, :method => :post, :class => "btn btn-large btn-primary"
 			- if user_signed_in? && current_user.id == @profile.user_id
 				= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-large"
 
 
 .row
-	.span4
+	.span4#social-stream
 		#group-publisher
 			= form_for Post.new, :remote => true do |f|
 				%p
@@ -34,23 +35,26 @@
 					.row
 						.span4.post-button
 							= f.submit("Post", :class => "btn btn-success pull-right", :id => "post-button")
-		- unless @wall.empty?
-			%table.table.table-condensed#social-stream-table
+		%table.table.table-condensed#social-stream-table
+			- unless @wall.empty?
 				= render @wall
 
 	.span5#content-canavas
 		- unless @activities.first.nil?
 			= render @activities.first.action_object
+		- unless @wall.empty?
+			= render :partial => "posts/embeded_post", :object => @wall.first
 		- else
 			.well
-				You currently have no content! You can simply create one by hitting the button on the right!
+				You have edited or created any page recently. You also don't have any wall posts!
 
 	.span3
 		%h1.page-header Recent Activity
-
-		%table.table.table-condensed.stream-table
-			- @activities.each do |activity|
-				= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
-		- if @getting_started
-			= render "shared/getting_started"
+		- if @activities.first.nil?
+			.well
+				You haven't edited or created any page recently.
+		- else
+			%table.table.table-condensed.stream-table
+				- @activities.each do |activity|
+					= render :partial => "activities/activity", :locals => { :activity => activity, :is_remote => true }
 

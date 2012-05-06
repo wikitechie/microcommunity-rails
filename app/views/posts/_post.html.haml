@@ -2,6 +2,11 @@
 	%td
 		= link_to image_tag(avatar_url(post.user), :width => "50"), post.user.profile
 	%td
-		%p= "#{post.user.profile.name} posted"
-		= link_to post.text, post, :remote => true, :class => "remote-wikipage-link"
+		= "#{post.user.profile.name} posted"
+		- if post.owner == post.user
+			on his wall
+		- else
+			- if post.owner_type == "User"
+				= "on #{post.owner.profile.name}'s wall"
+		%p= link_to post.text, post, :remote => true, :class => "remote-wikipage-link"
 

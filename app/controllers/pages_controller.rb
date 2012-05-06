@@ -4,11 +4,15 @@ class PagesController < ApplicationController
 
     unless current_user.nil?
       #fetching activites of followed users
-      @following_users = current_user.following_users
+      @following_users = current_user.following_users.push current_user
+      @all_users = User.all
+      @all_users_ids = @all_users.map do |user|
+        user.id
+      end
       @following_users_ids = @following_users.map  do |user|
         user.id
       end
-      @activities = Activity.where(:user_id => @following_users_ids).order("updated_at DESC")
+      @activities = Activity.where(:user_id => @all_users_ids).order("updated_at DESC")
 
       @getting_started = false
       if @activities.count == 0
@@ -19,7 +23,7 @@ class PagesController < ApplicationController
       @people = Profile.limit(3)
       @groups = Group.limit(3)
 
-      @posts_news_feed = Post.where(:owner_type => "User", :owner_id => @following_users_ids.push(params[:id])).order("created_at DESC")
+      @posts_news_feed = Post.where(:owner_type => "User", :owner_id => @all_users_ids).order("created_at DESC")
 
       render "home"
 
