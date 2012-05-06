@@ -42,11 +42,12 @@
 	.span5#content-canavas
 		- unless @activities.first.nil?
 			= render @activities.first.action_object
-		- unless @wall.empty?
-			= render :partial => "posts/embeded_post", :object => @wall.first
 		- else
-			.well
-				You have edited or created any page recently. You also don't have any wall posts!
+			- unless @wall.empty?
+				= render :partial => "posts/embeded_post", :object => @wall.first
+			- else
+				.well
+					You have edited or created any page recently. You also don't have any wall posts!
 
 	.span3
 		%h1.page-header Recent Activity
