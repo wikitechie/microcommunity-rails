@@ -3,6 +3,10 @@ class Activity < ActiveRecord::Base
   belongs_to :action_object, :polymorphic => true
   belongs_to :target_object, :polymorphic => true
 
+  validates :verb, :presence => true
+  validates :action_object, :presence => true
+  validates :user, :presence => true
+
   def contextual_verb
     case action_object_type
     when "Wikipage"
